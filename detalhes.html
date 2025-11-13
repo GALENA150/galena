@@ -1,0 +1,1247 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Imóvel — Detalhe</title>
+  <link rel="stylesheet" href="css/cokkies.css" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="icon" href="img/svg/casa.svg">
+  <style>
+    .property-page {
+      max-width: 1200px;
+      margin: 32px auto;
+      padding: 0 18px;
+      display: grid;
+      grid-template-columns: 1fr 360px;
+      gap: 28px;
+      align-items: start;
+    }
+
+    .gallery {
+      background: #fff;
+      border-radius: 12px;
+      padding: 12px;
+      box-shadow: 0 8px 28px rgba(2, 46, 24, 0.04);
+    }
+
+    .main-photo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #f8fafb;
+      /* fundo mais claro e neutro */
+      border-radius: 12px;
+      width: 100%;
+      height: 420px;
+      overflow: hidden;
+      text-align: center;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+      padding: 0;
+      /* sem espaço extra */
+    }
+
+    .main-photo img {
+      width: auto;
+      max-width: 100%;
+      height: auto;
+      max-height: 100%;
+      object-fit: contain !important;
+      background: transparent;
+      display: block;
+      margin: 0 auto;
+      border-radius: 18px !important;
+      transition: border-radius 0.18s, opacity 0.35s cubic-bezier(.4, .8, .2, 1);
+      /* adicionado fade suave */
+    }
+
+    .main-photo img.fading {
+      opacity: 0;
+      /* classe para controle de fade */
+    }
+
+    .thumbs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin-top: 12px;
+    }
+
+    .thumbs button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #f8fafb;
+      border-radius: 10px;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.10);
+      /* sombra mais visível */
+      width: 96px;
+      height: 64px;
+      padding: 0;
+      border: none;
+      overflow: hidden;
+      margin: 0;
+      transition: box-shadow 0.18s, transform 0.18s;
+      cursor: pointer;
+    }
+
+    .thumbs button:hover,
+    .thumbs button:focus {
+      box-shadow: 0 6px 18px rgba(107, 92, 255, 0.18), 0 2px 12px rgba(0, 0, 0, 0.10);
+      transform: translateY(-2px) scale(1.04);
+      outline: none;
+    }
+
+    .thumbs img {
+      width: auto;
+      max-width: 100%;
+      height: auto;
+      max-height: 100%;
+      object-fit: contain !important;
+      background: transparent;
+      display: block;
+      margin: 0 auto;
+      border-radius: 0;
+      border-radius: 18px !important;
+      /* pontas bem arredondadas */
+      transition: border-radius 0.18s;
+    }
+
+    .price {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--verde-mais-escuro);
+      margin-bottom: 14px;
+    }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin: 14px 0;
+      background: #fbfdfb;
+      padding: 12px;
+      border-radius: 8px;
+    }
+
+    .meta-item {
+      text-align: center;
+      font-size: 13px;
+      color: rgba(0, 0, 0, 0.712);
+    }
+
+    .section {
+      background: #fff;
+      border-radius: 12px;
+      padding: 18px;
+      margin-top: 18px;
+      box-shadow: 0 8px 28px rgba(2, 46, 24, 0.04);
+    }
+
+    @media (max-width: 980px) {
+      .property-page {
+        grid-template-columns: 1fr;
+        padding: 0 14px;
+      }
+
+      .property-info {
+        order: 2;
+      }
+
+      .gallery {
+        order: 1
+      }
+
+      .main-photo {
+        height: 320px
+      }
+    }
+
+    @media (max-width: 600px) {
+      .main-photo {
+        height: 350px;
+      }
+
+      .thumbs button {
+        width: 100px;
+        /* aumentado */
+        height: 62px;
+        /* aumentado */
+      }
+    }
+
+    /* botões do formulário */
+    .contact-field {
+      width: 100%;
+      padding: 10px 12px;
+      border-radius: 8px;
+      border: 1px solid var(--card-border);
+      background: var(--card-bg);
+    }
+
+    .contact-whatsapp {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px;
+      border-radius: 8px;
+      background: var(--verde);
+      color: #fff;
+      text-decoration: none;
+      font-weight: 700;
+      justify-content: center;
+      width: 100%;
+    }
+
+    .contact-submit {
+      background: #0f171f;
+      color: #fff;
+      padding: 12px;
+      border-radius: 8px;
+      border: none;
+      font-weight: 700;
+      width: 100%;
+    }
+
+    .wa-svg {
+      width: 18px;
+      height: 18px;
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    .back-btn {
+      position: fixed;
+      top: 14px;
+      left: 14px;
+      z-index: 1000;
+      width: 36px;
+      height: 36px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: #fff;
+      border-radius: 50%;
+      text-decoration: none;
+      padding: 4px;
+    }
+
+    .back-btn img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+      pointer-events: none;
+    }
+
+    /* overlay que "enche" de verde quando clicar em voltar (tons mais escuros) */
+    #fillOverlay {
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      /* ocupa a viewport, controlamos com scaleY */
+      background: linear-gradient(180deg, #073216 0%, #145b33 100%);
+      /* mais escuro */
+      z-index: 2000;
+      pointer-events: none;
+      transform-origin: bottom;
+      transform: scaleY(0);
+      transition: transform 2s cubic-bezier(.2, .9, .2, 1);
+      will-change: transform, opacity;
+      overflow: hidden;
+    }
+
+    #fillOverlay.active {
+      transform: scaleY(1);
+      pointer-events: auto;
+    }
+
+    /* efeito leve de "onda" sobre a água (menos brilho) */
+    #fillOverlay::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      bottom: 8%;
+      width: 160%;
+      height: 22%;
+      background: rgba(255, 255, 255, 0.03);
+      transform: translateX(-50%) rotate(-6deg);
+      filter: blur(12px);
+      animation: wave 2s ease-in-out infinite;
+      opacity: 0.6;
+    }
+
+    @keyframes wave {
+      0% {
+        transform: translateX(-50%) translateY(0) rotate(-6deg);
+      }
+
+      50% {
+        transform: translateX(-50%) translateY(-6px) rotate(-6deg);
+      }
+
+      100% {
+        transform: translateX(-50%) translateY(0) rotate(-6deg);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <a href="index.html" class="back-btn" aria-label="Voltar para a lista" title="Voltar">
+    <img src="video/seta.gif" alt="Voltar">
+  </a>
+  <div id="fillOverlay" aria-hidden="true"></div>
+  <main class="container property-page">
+    <section class="gallery" aria-label="Galeria de imagens do imóvel">
+      <div class="main-photo" id="mainPhoto">
+        <img src="img/placeholder.jpg" alt="Principal">
+      </div>
+
+      <div class="thumbs" id="thumbs" aria-hidden="false"></div>
+
+      <div class="section">
+        <h2 id="propertyTitle"></h2>
+        <div class="meta-grid" id="metaGrid">
+          <div class="meta-item"><strong id="propertyQuartos"></strong>
+            <div>Dormitórios</div>
+          </div>
+          <div class="meta-item"><strong id="propertyVagas"></strong>
+            <div>Vagas</div>
+          </div>
+          <div class="meta-item"><strong id="propertyArea"></strong>
+            <div>Área construída</div>
+          </div>
+        </div>
+        <p id="propDesc">Descrição genérica do imóvel. Substitua aqui pelo texto real.</p>
+
+        <!-- INÍCIO DAS INFORMAÇÕES INDIVIDUAIS (MOVIDO PARA O LADO ESQUERDO) -->
+        <div id="detalhesComodos" class="section"></div>
+        <div id="detalhesAcessos" class="section"></div>
+        <div id="detalhesCaracteristicas" class="section"></div>
+        <div id="detalhesOutras" class="section"></div>
+        <div id="detalhesProximidades" class="section"></div>
+        <!-- FIM DAS INFORMAÇÕES INDIVIDUAIS -->
+      </div>
+    </section>
+
+    <aside class="property-info" aria-label="Informações e contato">
+      <div class="price" id="propertyPreco"></div>
+
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <div style="font-weight:700;">Galena</div>
+        <div style="color:var(--muted);font-size:14px;">(17) 99154-3138</div>
+      </div>
+
+      <form id="sideContact" style="margin-top:16px; display:flex;flex-direction:column; gap:10px;">
+        <label>Nome
+          <input required name="name" class="contact-field" placeholder="Seu nome">
+        </label>
+
+        <label>E-mail
+          <input required name="email" type="email" class="contact-field" placeholder="Seu email">
+        </label>
+
+        <label>Mensagem
+          <textarea name="message" class="contact-field" rows="4">Olá, estou interessado neste imóvel.</textarea>
+        </label>
+
+        <div style="display:flex;flex-direction:column;gap:10px;margin-top:8px;">
+          <a id="waShare" class="contact-whatsapp" href="#" target="_blank" rel="noopener" aria-label="Enviar via WhatsApp">
+            <svg class="wa-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true">
+              <path fill="currentColor" d="M20.52 3.48A11.76 11.76 0 0012.02.25 11.79 11.79 0 00.96 12.3c0 2.07.54 4.11 1.57 5.9L.25 23.75l5.86-1.53a11.73 11.73 0 005.91 1.52h.01c6.5 0 11.81-5.28 11.81-11.79a11.8 11.8 0 00-3.27-8.95zM12.02 21.1a9 9 0 01-4.56-1.21l-.33-.2-3.48.91.93-3.38-.21-.34A9 9 0 1112.02 21.1zM17.06 14.47c-.25-.13-1.48-.73-1.71-.81-.23-.08-.4-.13-.57.13-.17.25-.66.81-.81.98-.15.17-.3.19-.55.06-.25-.13-1.05-.39-2-1.24-.74-.66-1.24-1.48-1.38-1.73-.15-.25-.02-.38.11-.51.11-.11.25-.3.38-.45.13-.15.17-.25.25-.42.08-.17.03-.32-.02-.45-.05-.13-.57-1.37-.78-1.87-.21-.49-.43-.42-.58-.42-.15 0-.32 0-.5 0-.17 0-.45.06-.69.32-.24.26-.92.9-.92 2.2 0 1.3.95 2.56 1.08 2.74.13.17 1.86 2.84 4.51 3.87 2.65 1.04 2.65.69 3.12.64.47-.05 1.48-.6 1.69-1.18.21-.58.21-1.08.15-1.18-.06-.1-.23-.16-.48-.29z" />
+            </svg>
+            Enviar pelo WhatsApp
+          </a>
+
+          <button type="submit" class="contact-submit">📧 Enviar</button>
+        </div>
+      </form>
+
+      <div class="section" style="margin-top:18px;font-size:14px;color:var(--muted);">
+        <strong>Localização:</strong>
+        <div id="propLocation">Bairro Exemplo - Cidade/SP</div>
+      </div>
+    </aside>
+  </main>
+
+  <div id="popupAlert" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.25);z-index:3000;align-items:center;justify-content:center;">
+    <div style="background:#fff;padding:32px 24px;border-radius:12px;box-shadow:0 4px 24px rgba(0,0,0,0.12);font-size:18px;text-align:center;max-width:90vw;">
+      <div id="popupAlertMsg">Preencha nome e e-mail antes de enviar pelo WhatsApp.</div>
+      <button id="popupAlertClose" style="margin-top:18px;padding:8px 24px;border-radius:8px;background:#145b33;color:#fff;font-weight:700;border:none;cursor:pointer;">OK</button>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script>
+    (function () {
+      const mock = [
+        {
+          id: '1',
+          title: 'Parque do trevo - José Bonifácio/SP',
+          price: 240000,
+          bairro: '📍Rua Das Figueiras - Parque Do Trevo',
+          quartos: 2,
+          vagas: 1,
+          area: '82,63m²',
+          desc: 'Casa espaçosa no centro, próxima a escola e com fácil acesso.',
+          detalhes: {
+            comodos: [
+              '2 Dormitórios',
+              '0 Suíte',
+              '1 Vaga',
+              'Cozinha',
+              'Banheiro Social',
+              'Área Gourmet'
+            ],
+            acessos: [
+              'Área Construída: 82,63m²',
+              'Terreno: 132,00m²',
+              'Garagem: 1',
+              'Portão Eletrônico: Não',
+              'Rua Asfaltada: Sim',
+            ],
+            caracteristicas: [
+              'Quintal: Sim',
+              'Área de Serviço: Sim',
+              'Venda',
+            ],
+            outras: [
+              'Habite-se: Sim',
+              'Perfil: Residencial',
+              'Situação: Venda',
+              'Documentação: Sim',
+              'Ambiente: -',
+              'Aceita troca: -', 'Próximo a Escola: C.M.E.I Vera de Almeida Mendonça',
+            ],
+            proximidades: [
+              'Cidade',
+              'Bancos: Não',
+              'Farmácia: Não',
+              'Igreja: Sim',
+              'Padaria: Sim',
+              'Praça: Sim',
+              'Quadra de Esportes: Sim',
+              'Supermercado: Não'
+            ]
+          },
+          imgs: [
+            'img/casa/01/01.jpg',
+            'img/casa/01/02.jpg',
+            'img/casa/01/03.jpg',
+            'img/casa/01/04.jpg',
+            'img/casa/01/05.jpg',
+            'img/casa/01/06.jpg',
+            'img/casa/01/07.jpg',
+            'img/casa/01/08.jpg',
+            'img/casa/01/09.jpg',
+            'img/casa/01/10.jpg'
+          ]
+        },
+        {
+          id: '2',
+          title: 'Centro - José Bonifácio/SP',
+          price: 400000,
+          bairro: '📍Rua São José - Centro',
+          quartos: 2,
+          vagas: 1,
+          area: '179,00m²',
+          desc: 'Casa com ótima localização, próxima a escola e com fácil acesso.',
+          detalhes: {
+            comodos: [
+              '2 Dormitórios',
+              '1 Suíte',
+              '1 Vaga',
+              'Cozinha',
+              '2 Banheiros Sociais',
+              'Área Gourmet: 0'
+            ],
+            acessos: [
+              'Área Construída: 179,00m²',
+              'Terreno: 326,00m²',
+              'Garagem: 1',
+              'Portão Eletrônico: -',
+              'Rua Asfaltada: Sim',
+              'Próximo a Escola: Sim'
+            ],
+            caracteristicas: [
+              'Quintal: -',
+              'Área de Serviço: -',
+              'Venda'
+            ],
+            outras: [
+              'Habite-se: -',
+              'Perfil: -',
+              'Situação: -',
+              'Documentação: -',
+              'Ambiente: -',
+              'Aceita troca: -'
+            ],
+            proximidades: [
+              'Cidade',
+              'Bancos: Sim',
+              'Farmácia: Sim',
+              'Igreja: Não',
+              'Padaria: Sim',
+              'Praça: Não',
+              'Quadra de Esportes: Sim',
+              'Supermercado: Não'
+            ]
+          },
+          imgs: [
+            'img/casa/02/01.jpg',
+            'img/casa/02/02.jpg',
+            'img/casa/02/03.jpg',
+            'img/casa/02/04.jpg',
+            'img/casa/02/05.jpg',
+            'img/casa/02/06.jpg'
+          ]
+        },
+        {
+          id: '3',
+          title: ' Jardim Vitória - José Bonifácio/SP',
+          price: 195000,
+          bairro: '📍Rua Lourdes De Souza Soares - Jardim Vitoria',
+          quartos: 1,
+          vagas: 1,
+          area: '92,62m²',
+          desc: 'Casa aconchegante, ideal para quem busca praticidade e conforto.',
+          detalhes: {
+            comodos: [
+              '1 Dormitório',
+              '1 Suíte',
+              '1 Vaga',
+              '1 Cozinha',
+              '1 Banheiro Social',
+              'Área Gourmet: 0'
+            ],
+            acessos: [
+              'Área Construída: 92,62m²',
+              'Terreno: 188,55m²',
+              'Garagem: 1',
+              'Portão Eletrônico: -',
+              'Rua Asfaltada: Sim',
+              'Próximo a Escola: Não'
+            ],
+            caracteristicas: [
+              'Quintal: Sim',
+              'Área de Serviço: Sim',
+              'Venda'
+            ],
+            outras: [
+              'Habite-se: -',
+              'Perfil: -',
+              'Situação: -',
+              'Documentação: -',
+              'Ambiente: -',
+              'Aceita troca: -'
+            ],
+            proximidades: [
+              'Cidade',
+              'Bancos: Não',
+              'Farmácia: Não',
+              'Igreja: Não',
+              'Padaria: Não',
+              'Praça: Não',
+              'Quadra de Esportes: Não',
+              'Supermercado: Não'
+            ]
+          },
+          imgs: [
+            'img/casa/03/01.jpg',
+            'img/casa/03/02.jpg',
+            'img/casa/03/03.jpg',
+            'img/casa/03/04.jpg',
+            'img/casa/03/05.jpg'
+          ]
+        },
+        {
+          id: '4',
+          title: 'Parque Do Trevo - José Bonifácio/SP',
+          price: 220000,
+          bairro: '📍Rua Dos Eucaliptos - Parque do Trevo ',
+          quartos: 3,
+          vagas: 2,
+          area: '140,00m²',
+          desc: 'Casa nova no Jardim Primavera, espaçosa e bem localizada.',
+          detalhes: {
+            comodos: [
+              '2 Dormitórios',
+              '0 Suíte',
+              '1 Vaga',
+              'Cozinha',
+              'Banheiro Social',
+            ],
+            acessos: [
+              'Área Construída: 72,00m²',
+              'Terreno: 6 x 25= 150,00m²',
+              'Garagem: 1',
+              'Portão Eletrônico: Não',
+              'Rua Asfaltada: Sim',
+            ],
+            caracteristicas: [
+              'Quintal: Sim',
+              'Área de Serviço: Sim',
+              'Venda',
+            ],
+            outras: [
+              'Habite-se: Sim',
+              'Perfil: Residencial',
+              'Situação: Venda',
+              'Documentação: Sim',
+              'Ambiente: -',
+              'Aceita troca: -', 'Próximo a Escola: C.M.E.I Vera de Almeida Mendonça',
+            ],
+            proximidades: [
+              'Cidade',
+              'Bancos: Não',
+              'Farmácia: Não',
+              'Igreja: Sim',
+              'Padaria: Sim',
+              'Praça: Sim',
+              'Quadra de Esportes: Sim',
+              'Supermercado: Não'
+            ]
+          },
+          imgs: [
+            'img/casa/04/01.jpg',
+            'img/casa/04/02.jpg',
+            'img/casa/04/03.jpg',
+            'img/casa/04/04.jpg',
+            'img/casa/04/05.jpg',
+            'img/casa/04/07.jpg',
+            'img/casa/04/08.jpg',
+            'img/casa/04/09.jpg',
+            'img/casa/04/10.jpg',
+            'img/casa/04/11.jpg',
+            'img/casa/04/12.jpg',
+          ]
+        },
+        {
+          id: '5',
+          title: 'Monte-Alegre - José Bonifácio/SP',
+          price: 470000,
+          bairro: '📍Rua Doutor Manoel Greco Rei - Monte Alegre ',
+          quartos: 2,
+          vagas: 1,
+          area: '160,72m²',
+          desc: 'Casa bem localizada, próxima à escola e com ótimo espaço interno.',
+          detalhes: {
+            comodos: [
+              '2 Dormitórios',
+              '1 Suíte',
+              '1 Vaga',
+              'Cozinha',
+              '3 Banheiros Sociais',
+              'Área Gourmet: 0'
+            ],
+            acessos: [
+              'Área Construída: 160,72m²',
+              'Terreno: 298,08m²',
+              'Garagem: 1',
+              'Portão Eletrônico: -',
+              'Rua Asfaltada: Sim',
+              'Próximo a Escola: C.M.E.I Alice Madalena Hernandes'
+            ],
+            caracteristicas: [
+              'Quintal: Sim',
+              'Área de Serviço: Sim',
+              'Venda'
+            ],
+            outras: [
+              'Habite-se: -',
+              'Perfil: -',
+              'Situação: -',
+              'Documentação: -',
+              'Ambiente: -',
+              'Aceita troca: -'
+            ],
+            proximidades: [
+              'Cidade',
+              'Bancos: Não',
+              'Farmácia: Não',
+              'Igreja: Sim',
+              'Padaria: Não',
+              'Praça: Sim',
+              'Quadra de Esportes: Sim',
+              'Supermercado: Sim'
+            ]
+          },
+          imgs: [
+            'img/casa/05/01.jpg',
+            'img/casa/05/02.jpg',
+            'img/casa/05/04.jpg',
+            'img/casa/05/05.jpg',
+            'img/casa/05/06.jpg',
+            'img/casa/05/07.jpg',
+            'img/casa/05/08.jpg',
+            'img/casa/05/09.jpg',
+            'img/casa/05/10.jpg',
+            'img/casa/05/11.jpg',
+            'img/casa/05/12.jpg',
+            'img/casa/05/13.jpg',
+            'img/casa/05/14.jpg',
+            'img/casa/05/15.jpg',
+            'img/casa/05/16.jpg',
+            'img/casa/05/17.jpg',
+            'img/casa/05/18.jpg',
+            'img/casa/05/19.jpg',
+            'img/casa/05/20.jpg',
+            'img/casa/05/21.jpg'
+          ]
+        },
+        {
+          id: '6',
+          title: 'Sansone - José Bonifácio/SP',
+          price: 400000,
+          bairro: '📍Rua Luis Amadeu - Sansone',
+          quartos: 2,
+          vagas: 1,
+          area: '175,00m²',
+          desc: 'Casa moderna com área gourmet, próxima ao Centro Educacional Sesi-381.',
+          detalhes: {
+            comodos: [
+              '2 Dormitórios',
+              '1 Suíte',
+              '1 Vaga',
+              'Cozinha',
+              '3 Banheiros Sociais',
+              'Área Gourmet: 1'
+            ],
+            acessos: [
+              'Área Construída: 175,00m²',
+              'Terreno: 214,00m²',
+              'Garagem: 1',
+              'Portão Eletrônico: Sim',
+              'Rua Asfaltada: Sim',
+              'Próximo a Escola: Centro Educacional Sesi-381'
+            ],
+            caracteristicas: [
+              'Quintal: Sim',
+              'Área de Serviço: Sim',
+              'Venda'
+            ],
+            outras: [
+              'Habite-se: -',
+              'Perfil: -',
+              'Situação: -',
+              'Documentação: -',
+              'Ambiente: -',
+              'Aceita troca: -'
+            ],
+            proximidades: [
+              'Cidade',
+              'Bancos: Não',
+              'Farmácia: Não',
+              'Igreja: Sim',
+              'Padaria: Sim',
+              'Praça: Sim',
+              'Quadra de Esportes: Não',
+              'Supermercado: Sim'
+            ]
+          },
+          imgs: [
+            'img/casa/06/01.jpg',
+            'img/casa/06/02.jpg',
+            'img/casa/06/03.jpg',
+            'img/casa/06/04.jpg',
+            'img/casa/06/05.jpg',
+            'img/casa/06/06.jpg',
+            'img/casa/06/07.jpg',
+            'img/casa/06/08.jpg',
+            'img/casa/06/09.jpg',
+            'img/casa/06/10.jpg',
+            'img/casa/06/11.jpg',
+            'img/casa/06/12.jpg',
+            'img/casa/06/13.jpg',
+            'img/casa/06/14.jpg',
+            'img/casa/06/15.jpg',
+            'img/casa/06/16.jpg'
+          ]
+        },
+
+        // Rancho
+        {
+          id: '7',
+          title: 'Rancho Condomínio Nova Iorque',
+          price: 700000,
+          bairro: 'Condomínio Nova Iorque - José Bonifácio/SP',
+          quartos: 2,
+          vagas: 4,
+          area: '308,00m²',
+          desc: 'Rancho com 700m² de terreno e 308m² de área construída, lazer completo e segurança 24h, às margens da Rod. Assis Chateaubriand e Rio Tietê.',
+          detalhes: {
+            comodos: [
+              'Piso Superior: 121,00m²',
+              '1 Sala ampla',
+              '1 Cozinha',
+              '2 Quartos (1 suíte)',
+              '2 Banheiros',
+              'Sacada',
+              'Piso Inferior: 121,00m²',
+              'Garagem ampla',
+              'Quiosque: 66,00m²',
+              '1 Cozinha',
+              '2 Banheiros',
+              '1 Despejo'
+            ],
+            acessos: [
+              'Área construída: 308,00m²',
+              'Terreno: 700,00m²',
+              'Garagem ampla',
+              'Quiosque fechado em vidro e climatizado',
+              'Portaria 24h',
+              'Rua asfaltada',
+              'Local tranquilo e seguro',
+              'Às margens da Rod. Assis Chateaubriand e Rio Tietê'
+            ],
+            caracteristicas: [
+              'Playground',
+              'Piscina',
+              'Área verde',
+              'Venda'
+            ],
+            outras: [
+              'Habite-se: Sim',
+              'Perfil: Lazer/Residencial',
+              'Situação: Pronto para morar',
+              'Documentação: Sim',
+              'Ambiente: Familiar',
+              'Aceita troca: Não'
+            ],
+            proximidades: [
+              'Rodovia Assis Chateaubriand',
+              'Rio Tietê',
+              'Portaria 24h',
+              'Condomínio fechado'
+            ]
+          },
+          imgs: [
+            'img/rancho/01/01.jpg',
+            'img/rancho/01/02.jpg',
+            'img/rancho/01/03.jpg',
+            'img/rancho/01/04.jpg',
+            'img/rancho/01/05.jpg'
+          ]
+        },
+
+        // Barracão
+        {
+          id: '8',
+          title: 'Barracão Industrial',
+          price: 600000,
+          bairro: 'Avenida Insdustrial - José Bonifácio/SP',
+          quartos: 0,
+          vagas: 0,
+          area: '403,00m²',
+          desc: 'Barracão industrial com terreno amplo de 1.067,00m² e área construída de 403,00m², incluindo sala, cozinha, 3 banheiros e barracão de 330m².',
+          detalhes: {
+            comodos: [
+              '1 Sala',
+              '1 Cozinha',
+              '3 Banheiros',
+              '1 Barracão de 330m²'
+            ],
+            acessos: [
+              'Área Construída: 403,00m²',
+              'Terreno: 1.067,00m²',
+              'Garagem: -',
+              'Portão Eletrônico: -',
+              'Rua Asfaltada: Sim'
+            ],
+            caracteristicas: [
+              'Amplo espaço',
+              'Ideal para indústria ou depósito',
+              'Venda'
+            ],
+            outras: [
+              'Habite-se: -',
+              'Perfil: Industrial',
+              'Situação: Pronto para uso',
+              'Documentação: Sim',
+              'Ambiente: -',
+              'Aceita troca: -'
+            ],
+            proximidades: [
+              'Distrito Industrial',
+              'Rodovia: Próximo',
+              'Posto de combustível: Próximo',
+              'Restaurante: Próximo',
+              'Centro da cidade: Próximo'
+            ]
+          },
+          imgs: [
+            'img/BARRACOES/01/01.jpg',
+            'img/BARRACOES/01/02.jpg',
+            'img/BARRACOES/01/03.jpg',
+            'img/BARRACOES/01/04.jpg',
+            'img/BARRACOES/01/06.jpg',
+            'img/BARRACOES/01/07.jpg'
+          ]
+        },
+
+        // Terrenos
+        {
+          id: '9',
+          title: 'Terreno Residencial',
+          price: 380000,
+          bairro: 'Próximo ao ABAM, Buffet Doce Mistura, JAM, Caixa',
+          quartos: 0,
+          vagas: 0,
+          area: '437,27m²',
+          desc: 'Terreno de 437,27 m² em excelente localização, próximo ao ABAM, Buffet Doce Mistura, JAM e Caixa.',
+          detalhes: {
+            comodos: [
+              'Terreno plano',
+              'Sem construção'
+            ],
+            acessos: [
+              'Área: 437,27m²',
+              'Rua asfaltada'
+            ],
+            caracteristicas: [
+              'Venda'
+            ],
+            outras: [
+              'Documentação regular'
+            ],
+            proximidades: [
+              'ABAM',
+              'Buffet Doce Mistura',
+              'JAM',
+              'Caixa'
+            ]
+          },
+          imgs: [
+            'img/terrenos/01/01.jpg',
+            'img/terrenos/01/02.jpg',
+            'img/terrenos/01/03.jpg',
+            'img/terrenos/01/04.jpg',
+            'img/terrenos/01/05.jpg'
+          ]
+        },
+        {
+          id: '10',
+          title: 'Terreno - Parque do Trevo',
+          price: 90000,
+          bairro: '📍Parque do Trevo - José Bonifácio/SP',
+          quartos: 0,
+          vagas: 0,
+          area: '307,77m²',
+          desc: 'Terreno à venda no Parque do Trevo, excelente localização.',
+          detalhes: {
+            comodos: [
+              'Terreno',
+              'Sem construção'
+            ],
+            acessos: [
+              'Área: 307,77m²',
+              'Rua Asfaltada: Sim',
+              'Garagem: -',
+              'Portão Eletrônico: Não'
+            ],
+            caracteristicas: [
+              'Quintal: Sim',
+              'Área de Serviço: Sim',
+              'Venda'
+            ],
+            outras: [
+              'Habite-se: Sim',
+              'Perfil: Residencial',
+              'Situação: Venda',
+              'Documentação: Sim',
+              'Ambiente: -',
+              'Aceita troca: -',
+              'Próximo a Escola: C.M.E.I Vera de Almeida Mendonça'
+            ],
+            proximidades: [
+              'Cidade',
+              'Bancos: Não',
+              'Farmácia: Não',
+              'Igreja: Sim',
+              'Padaria: Sim',
+              'Praça: Sim',
+              'Quadra de Esportes: Sim',
+              'Supermercado: Não'
+            ]
+          },
+          imgs: [
+            'img/terrenos/02/01.jpg',
+            'img/terrenos/02/02.jpg',
+            'img/terrenos/02/03.jpg',
+            'img/terrenos/02/04.jpg',
+          ]
+        },
+        {
+          id: '11',
+          title: 'Terreno - Próx. Av. Joaquim Moreira',
+          price: 160000,
+          bairro: '📍Próximo à Av. Joaquim Moreira, Mercado Proença, Paróquia São José',
+          quartos: 0,
+          vagas: 0,
+          area: '390m²',
+          desc: 'Terreno de 12 x 32,5 = 390m², excelente localização próximo à avenida Joaquim Moreira, mercado Proença e paróquia São José.',
+          detalhes: {
+            comodos: [
+              'Terreno de 390m²',
+              'Sem construção'
+            ],
+            acessos: [
+              'Área: 390m²',
+              'Rua asfaltada'
+            ],
+            caracteristicas: [
+              'Venda'
+            ],
+            outras: [
+              'Documentação regular'
+            ],
+            proximidades: [
+              'Avenida Joaquim Moreira',
+              'Mercado Proença',
+              'Paróquia São José'
+            ]
+          },
+          imgs: [
+            'img/terrenos/03/1.png',
+            'img/terrenos/03/2.png',
+            'img/terrenos/03/3.png',
+            'img/terrenos/03/4.png',
+            'img/terrenos/03/5.png'
+          ]
+        },
+      ];
+      ;
+
+      const params = new URLSearchParams(window.location.search);
+      const id = params.get('id') || '1';
+      const prop = mock.find(p => p.id === id) || mock[0];
+
+      document.getElementById('propertyTitle').textContent = prop.title;
+      document.getElementById('propertyPreco').textContent = prop.price.toLocaleString('pt-BR', {
+        style: 'currency',
+        currency: 'BRL'
+      });
+      document.getElementById('propertyQuartos').textContent = prop.quartos;
+      document.getElementById('propertyVagas').textContent = prop.vagas;
+      document.getElementById('propertyArea').textContent = prop.area;
+      document.getElementById('propDesc').textContent = prop.desc;
+      document.getElementById('propLocation').textContent = prop.bairro + ' - José Bonifácio/SP';
+
+      const mainPhoto = document.querySelector('#mainPhoto img');
+      const thumbs = document.getElementById('thumbs');
+
+      // Corrige: mostra a primeira imagem do imóvel selecionado
+      mainPhoto.src = prop.imgs[0] || 'img/placeholder.jpg';
+
+      // cria thumbs, pré-carrega e faz crossfade suave (evita "piscar")
+      prop.imgs.forEach((src, idx) => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.setAttribute('aria-label', 'Ver foto ' + (idx + 1));
+        // evita foco por mousedown (evita repaints)
+        btn.addEventListener('mousedown', e => e.preventDefault());
+
+        const im = document.createElement('img');
+        im.src = src;
+        im.alt = prop.title + ' ' + (idx + 1);
+        im.onerror = () => im.src = 'img/placeholder.jpg';
+        btn.appendChild(im);
+
+        btn.addEventListener('click', () => {
+          // se já está ativa, ignora
+          if (btn.classList.contains('active')) return;
+
+          // desativa todos os thumbs enquanto carrega
+          thumbs.querySelectorAll('button').forEach(b => b.disabled = true);
+          btn.classList.add('active');
+
+          const preload = new Image();
+          preload.src = src;
+
+          preload.onload = () => {
+            // crossfade suave
+            mainPhoto.style.opacity = '0';
+
+            // espera a opacidade sumir, troca src e faz fadeIn
+            setTimeout(() => {
+              mainPhoto.src = src;
+              mainPhoto.onload = () => {
+                requestAnimationFrame(() => {
+                  mainPhoto.style.opacity = '1';
+                  // reativa thumbs
+                  thumbs.querySelectorAll('button').forEach(b => b.disabled = false);
+                  // remove active de outras e garante apenas um active
+                  thumbs.querySelectorAll('button').forEach(b => { if (b !== btn) b.classList.remove('active'); });
+                });
+              };
+            }, 160);
+          };
+
+          preload.onerror = () => {
+            // fallback sem causar novo loop
+            mainPhoto.src = 'img/placeholder.jpg';
+            mainPhoto.style.opacity = '1';
+            thumbs.querySelectorAll('button').forEach(b => b.disabled = false);
+            btn.classList.remove('active');
+          };
+        });
+
+        thumbs.appendChild(btn);
+      });
+
+      // atualiza href do WhatsApp com dados do formulário
+      const wa = document.getElementById('waShare');
+
+      function updateWaHref() {
+        const form = document.getElementById('sideContact');
+        const fd = new FormData(form);
+        const text = `${fd.get('message') || ''}\nImóvel: ${prop.title}\nNome: ${fd.get('name') || ''}\nEmail: ${fd.get('email') || ''}`;
+        wa.href = `https://wa.me/5517991543138?text=${encodeURIComponent(text)}`;
+      }
+
+      document.getElementById('sideContact').addEventListener('input', updateWaHref);
+      updateWaHref();
+
+      // exemplo de submit: redireciona para contato.html com querystring
+      document.getElementById('sideContact').addEventListener('submit', function (e) {
+        e.preventDefault();
+        const form = this;
+        const name = form.elements['name'].value.trim();
+        const email = form.elements['email'].value.trim();
+        if (!name || !email) {
+          document.getElementById('popupAlert').style.display = 'flex';
+          document.getElementById('popupAlertMsg').textContent = 'Preencha nome e e-mail antes de enviar.';
+          return;
+        }
+
+        // Preenche a mensagem automaticamente com o imóvel de interesse
+        form.elements['message'].value =
+          `Olá, estou interessado no imóvel: ${prop.title} localizado em ${prop.bairro}.\nNome: ${name}\nEmail: ${email}`;
+
+        // Envia via EmailJS
+        emailjs.sendForm('service_ndkuvzr', 'template_vyb71os', form, 'xSO0YQjWZ5dbHX4LM')
+          .then(function () {
+            document.getElementById('popupAlert').style.display = 'flex';
+            document.getElementById('popupAlertMsg').textContent = 'Mensagem enviada com sucesso!';
+            form.reset();
+          }, function (error) {
+            document.getElementById('popupAlert').style.display = 'flex';
+            document.getElementById('popupAlertMsg').textContent = 'Erro ao enviar. Tente novamente.';
+          });
+      });
+
+      // preview de GIF selecionado pelo usuário
+      const gifInput = document.getElementById('gifInput');
+      if (gifInput) {
+        gifInput.addEventListener('change', () => {
+          const file = gifInput.files && gifInput.files[0];
+          if (!file) return;
+          if (!file.type || !file.type.includes('gif')) {
+            alert('Selecione um arquivo GIF.');
+            gifInput.value = '';
+            return;
+          }
+
+          const url = URL.createObjectURL(file);
+
+          // cria um thumb para o GIF e mostra como principal
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.setAttribute('aria-label', 'GIF do imóvel');
+          btn.addEventListener('mousedown', ev => ev.preventDefault());
+
+          const im = document.createElement('img');
+          im.src = url;
+          im.alt = 'GIF do imóvel';
+          im.onerror = () => im.src = 'img/placeholder.jpg';
+          btn.appendChild(im);
+
+          // remove active dos outros e insere no início
+          thumbs.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+          thumbs.insertBefore(btn, thumbs.firstChild);
+          btn.classList.add('active');
+
+          // crossfade para o GIF na foto principal
+          mainPhoto.style.opacity = '0';
+          setTimeout(() => {
+            mainPhoto.src = url;
+            mainPhoto.onload = () => {
+              requestAnimationFrame(() => { mainPhoto.style.opacity = '1'; });
+            };
+          }, 160);
+
+          // libera o objectURL quando a página for descarregada
+          window.addEventListener('beforeunload', () => { URL.revokeObjectURL(url); }, { once: true });
+        });
+      }
+
+      // animação de "encher copo" verde antes de voltar para index.html (usa scaleY)
+      const backBtn = document.querySelector('a[aria-label="Voltar para a lista"]');
+      const fillOverlay = document.getElementById('fillOverlay');
+      if (backBtn && fillOverlay) {
+        backBtn.addEventListener('click', function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+          // evita cliques repetidos
+          if (backBtn.dataset.disabled === '1') return;
+          backBtn.dataset.disabled = '1';
+          backBtn.style.pointerEvents = 'none';
+
+          // force reflow antes de adicionar a classe para garantir a transição
+          void fillOverlay.offsetWidth;
+          fillOverlay.classList.add('active');
+
+          // suaviza o resto do conteúdo durante a animação
+          document.documentElement.style.transition = 'opacity 1.8s ease';
+          document.documentElement.style.opacity = '0.92';
+
+          // aguarda 2s e então navega
+          setTimeout(() => {
+            window.location.href = 'index.html';
+          }, 2000);
+        });
+      }
+
+      function renderSection(id, title, items) {
+        const el = document.getElementById(id);
+        if (!el) return;
+        el.innerHTML = `<h3>${title}</h3>
+    <div class="meta-grid">
+      ${items.map(item => `<div class="meta-item">${item}</div>`).join('')}
+    </div>`;
+      }
+
+      renderSection('detalhesComodos', 'Cômodos', prop.detalhes.comodos);
+      renderSection('detalhesAcessos', 'Acessos', prop.detalhes.acessos);
+      renderSection('detalhesCaracteristicas', 'Características', prop.detalhes.caracteristicas);
+      renderSection('detalhesOutras', 'Outras Informações', prop.detalhes.outras);
+      renderSection('detalhesProximidades', 'Proximidades', prop.detalhes.proximidades);
+
+      document.getElementById('waShare').addEventListener('click', function (e) {
+        const form = document.getElementById('sideContact');
+        const name = form.elements['name'].value.trim();
+        const email = form.elements['email'].value.trim();
+        if (!name || !email) {
+          e.preventDefault();
+          document.getElementById('popupAlert').style.display = 'flex';
+          document.getElementById('popupAlertMsg').textContent = 'Preencha nome e e-mail antes de enviar pelo WhatsApp.';
+        }
+      });
+
+      document.getElementById('popupAlertClose').onclick = function () {
+        document.getElementById('popupAlert').style.display = 'none';
+      };
+
+      emailjs.init('xSO0YQjWZ5dbHX4LM'); // Adicione esta linha antes do sendForm
+    })();
+  </script>
+  <script src="cookies.js"></script>
+
+</body>
+
+</html>

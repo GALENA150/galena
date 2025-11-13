@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Galena - Imobiliária</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/cokkies.css" />
+  <link rel="icon" href="img/svg/casa.svg">
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="header-container">
+      <div class="header-left">
+        <div class="whatsapp-dropdown desktop-only">
+          <button class="whatsapp-btn" id="whBtn" aria-expanded="false" aria-controls="whList">
+            <span class="wh-number">Galena</span>
+            <span class="icon-mask wh-icon" aria-hidden="true"></span>
+            <span class="wh-arrow" aria-hidden="true">▾</span>
+          </button>
+
+          <div class="dropdown-list" id="whList" role="menu" aria-hidden="true">
+            <button class="dropdown-item" data-phone="5517991543138" data-name="Galena">Galena<span class="icon-mask wh-icon" aria-hidden="true"></span></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="header-center">
+        <a href="index.html" class="logo-link">
+          <img src="img/logos/GALENA FUNDO BRANCO LETRA PRETA.jpeg" class="site-logo" alt="Logo" />
+        </a>
+      </div>
+      <div class="header-right">
+        <a href="https://instagram.com/galena.c.i" class="social-btn" target="_blank" rel="noopener noreferrer">
+          <img src="img/svg/instagram.svg" alt="Instagram" />
+        </a>
+      </div>
+
+    </div>
+
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-label="Abrir menu">
+      <span class="hamburger" aria-hidden="true"></span>
+    </button>
+
+    <nav class="main-nav" id="mainNav" role="navigation" aria-label="Menu principal">
+      <div class="nav-wrap">
+        <ul class="nav-list">
+          <li class="nav-item nav-whatsapp mobile-only">
+            <div class="nav-wh-list" role="group" aria-label="WhatsApp contatos">
+              <button class="nav-wh-btn dropdown-item" data-phone="5517991543138" aria-label="WhatsApp Galena">Galena — WhatsApp</button>
+              <button class="nav-wh-btn dropdown-item" data-phone="5517992118116" aria-label="WhatsApp Jeferson">Jeferson — WhatsApp</button>
+              <button class="nav-wh-btn dropdown-item" data-phone="5517997168554" aria-label="WhatsApp Marcelo">Marcelo — WhatsApp</button>
+            </div>
+          </li>
+
+          <li class="nav-item"><a href="index.html" class="nav-link active">Início</a></li>
+          <li class="nav-item"><a href="sobre.html" class="nav-link">Sobre</a></li>
+          <li class="nav-item"><a href="contato.html" class="nav-link">Contato</a></li>
+          <li class="nav-item"><a href="politica.html" class="nav-link">Política de Privacidade</a></li>
+          <li class="nav-item"><a href="catalogo.html" class="nav-link">Catalogo</a></li>
+          <li class="nav-item"><a href="negocie.html" class="nav-link">Negocie seu Imóvel</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero-banner" aria-label="Banner principal">
+      <div class="hero-media">
+        <img class="banner-img" src="img/banner/banner.png" alt="Banner principal — coloque aqui a imagem" />
+      </div>
+    </section>
+
+
+    <section class="ultima-hora">
+
+      <img src="img/personagem/juntos.png" alt="Marcelo e Jeferson">
+
+      <h2 class="titulo-h2">Marcelo e Jéferson unem experiência e liderança em uma parceria sólida, guiada por ética, profissionalismo e excelência no atendimento, consolidando a credibilidade e o sucesso da empresa no mercado.</h2>
+
+
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-container">
+      <!-- Coluna 1 -->
+      <div class="footer-column">
+        <div class="footer-logo">
+          <img src="img/svg/LOGO BRANCA.svg" alt="Logo Galena Imobiliária">
+        </div>
+        <p>Avenida Antônio Gonçalves da Silva,1543, São José, Sala 2</p>
+        <p><a href="https://wa.me/5517991543138" target="_blank">(17) 99154-3138 - Galena</a> <i class="fab fa-whatsapp"></i></p>
+        <p><a href="mailto:galena.imob@gmail.com">Ver e-mail</a> <i class="fas fa-envelope"></i></p>
+      </div>
+
+      <!-- Coluna 2 -->
+      <div class="footer-column">
+        <h3>Menu</h3>
+        <ul>
+          <li><a href="index.html">Início</a></li>
+          <li><a href="sobre.html">Sobre</a></li>
+          <li><a href="contato.html">Contato</a></li>
+          <li><a href="politica.html">Política de Privacidade</a></li>
+          <li><a href="catalogo.html">Catalogo</a></li>
+          <li><a href="negocie.html">Negocie seu Imóvel</a></li>
+        </ul>
+      </div>
+
+      <!-- Coluna 3 -->
+      <div class="footer-column">
+        <h3>Fale Conosco</h3>
+        <form id="footer-form">
+          <input type="text" name="nome" placeholder="Seu nome" required>
+          <input type="email" name="email" placeholder="Seu e-mail" required>
+          <textarea name="mensagem" placeholder="Sua mensagem..." required></textarea>
+          <button type="submit">Enviar</button>
+          <div id="footer-status" style="margin-top:8px;font-size:15px;"></div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Linha inferior -->
+    <div class="footer-bottom">
+      <p>© Copyright 2025 - GALENA Imobiliária - Todos os direitos reservados</p>
+    </div>
+  </footer>
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+  <!-- Scripts do site -->
+  <script src="js/script.js"></script>
+  <script src="js/nav-active.js"></script>
+
+  <!-- EmailJS -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script src="js/emailjs-footer.js"></script>
+
+
+  <script src="js/cokkies.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Catalogo - Imobiliária</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/cokkies.css" />
+  <link rel="icon" href="img/svg/casa.svg">
+
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="header-container">
+      <div class="header-left">
+        <div class="whatsapp-dropdown desktop-only">
+          <button class="whatsapp-btn" id="whBtn" aria-expanded="false" aria-controls="whList">
+            <span class="wh-number">Galena</span>
+            <span class="icon-mask wh-icon" aria-hidden="true"></span>
+            <span class="wh-arrow" aria-hidden="true">▾</span>
+          </button>
+
+          <div class="dropdown-list" id="whList" role="menu" aria-hidden="true">
+            <button class="dropdown-item" data-phone="5517991543138" data-name="Galena">Galena<span class="icon-mask wh-icon" aria-hidden="true"></span></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="header-center">
+        <a href="index.html" class="logo-link">
+          <img src="img/logos/GALENA FUNDO BRANCO LETRA PRETA.jpeg" class="site-logo" alt="Logo" />
+        </a>
+      </div>
+
+      <div class="header-right">
+        <a href="https://instagram.com/galena.c.i" class="social-btn" target="_blank" rel="noopener noreferrer">
+          <img src="img/svg/instagram.svg" alt="Instagram" />
+        </a>
+      </div>
+    </div>
+
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-label="Abrir menu">
+      <span class="hamburger" aria-hidden="true"></span>
+    </button>
+
+    <nav class="main-nav" id="mainNav" role="navigation" aria-label="Menu principal">
+      <div class="nav-wrap">
+        <ul class="nav-list">
+          <li class="nav-item nav-whatsapp mobile-only">
+            <div class="nav-wh-list" role="group" aria-label="WhatsApp contatos">
+              <button class="nav-wh-btn dropdown-item" data-phone="5517991543138" aria-label="WhatsApp Galena">Galena — WhatsApp</button>
+              <button class="nav-wh-btn dropdown-item" data-phone="5517992118116" aria-label="WhatsApp Jeferson">Jeferson — WhatsApp</button>
+              <button class="nav-wh-btn dropdown-item" data-phone="5517997168554" aria-label="WhatsApp Marcelo">Marcelo — WhatsApp</button>
+            </div>
+          </li>
+
+          <li class="nav-item"><a href="index.html" class="nav-link active">Início</a></li>
+          <li class="nav-item"><a href="sobre.html" class="nav-link">Sobre</a></li>
+          <li class="nav-item"><a href="contato.html" class="nav-link">Contato</a></li>
+          <li class="nav-item"><a href="politica.html" class="nav-link">Política de Privacidade</a></li>
+          <li class="nav-item"><a href="catalogo.html" class="nav-link">Catalogo</a></li>
+          <li class="nav-item"><a href="negocie.html" class="nav-link">Negocie seu Imóvel</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <div class="catalog-container">
+      <!-- CASA 01 -->
+      <div class="imovel-card">
+        <a href="detalhes.html?id=1">
+          <img src="img/casa/01/01.jpg" class="imovel-img">
+        </a>
+        <h3 style="display:flex;align-items:center;justify-content:center;gap:6px;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#1ca55c" viewBox="0 0 24 24" style="vertical-align:middle;">
+            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+          </svg>
+          Parque do trevo - José Bonifácio/SP
+        </h3>
+        <p class="detalhes">Casa · 2 quartos</p>
+        <p class="preco">R$ 240.000,00</p>
+        <div class="btn-area">
+          <a href="#" class="btn-contato">Ver contato</a>
+          <a href="#" class="btn-whats" data-title="Parque do trevo - José Bonifácio/SP" data-preco="R$ 240.000,00">WhatsApp</a>
+        </div>
+      </div>
+
+      <!-- CASA 02 -->
+      <div class="imovel-card">
+        <a href="detalhes.html?id=2">
+          <img src="img/casa/02/01.jpg" class="imovel-img">
+        </a>
+        <h3 style="display:flex;align-items:center;justify-content:center;gap:6px;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#1ca55c" viewBox="0 0 24 24" style="vertical-align:middle;">
+            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+          </svg>
+          Centro - José Bonifácio/SP
+        </h3>
+        <p class="detalhes">Casa · Centro · 2 quartos</p>
+        <p class="preco">R$ 400.000,00</p>
+        <div class="btn-area">
+          <a href="#" class="btn-contato">Ver contato</a>
+          <a href="#" class="btn-whats" data-title="Centro - José Bonifácio/SP" data-preco="R$ 400.000,00">WhatsApp</a>
+        </div>
+      </div>
+
+      <!-- CASA 03 -->
+      <div class="imovel-card">
+        <a href="detalhes.html?id=3">
+          <img src="img/casa/03/01.jpg" class="imovel-img">
+        </a>
+        <h3 style="display:flex;align-items:center;justify-content:center;gap:6px;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#1ca55c" viewBox="0 0 24 24" style="vertical-align:middle;">
+            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+          </svg>
+          Jd. Vitória - José Bonifácio/SP
+        </h3>
+        <p class="detalhes">Casa · 2 quartos</p>
+        <p class="preco">R$ 195.000,00</p>
+        <div class="btn-area">
+          <a href="#" class="btn-contato">Ver contato</a>
+          <a href="#" class="btn-whats" data-title="Jd. Vitória - José Bonifácio/SP" data-preco="R$ 195.000,00">WhatsApp</a>
+        </div>
+      </div>
+
+      <!-- CASA 04 -->
+      <div class="imovel-card">
+        <a href="detalhes.html?id=4">
+          <img src="img/casa/04/01.jpg" class="imovel-img">
+        </a>
+        <h3 style="display:flex;align-items:center;justify-content:center;gap:6px;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#1ca55c" viewBox="0 0 24 24" style="vertical-align:middle;">
+            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+          </svg>
+          Parque Do Trevo - José Bonifácio/SP
+        </h3>
+        <p class="detalhes">Casa · 2 quartos</p>
+        <p class="preco">R$ 220.000,00</p>
+        <div class="btn-area">
+          <a href="#" class="btn-contato">Ver contato</a>
+          <a href="#" class="btn-whats" data-title="Parque Do Trevo - José Bonifácio/SP" data-preco="R$ 220.000,00">WhatsApp</a>
+        </div>
+      </div>
+
+      <!-- CASA 05 -->
+      <div class="imovel-card">
+        <a href="detalhes.html?id=5">
+          <img src="img/casa/05/01.jpg" class="imovel-img">
+        </a>
+        <h3 style="display:flex;align-items:center;justify-content:center;gap:6px;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#1ca55c" viewBox="0 0 24 24" style="vertical-align:middle;">
+            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+          </svg>
+          Monte-Alegre - José Bonifácio/SP
+        </h3>
+        <p class="detalhes">Casa · 3 quartos</p>
+        <p class="preco">R$ 470.000,00</p>
+        <div class="btn-area">
+          <a href="#" class="btn-contato">Ver contato</a>
+          <a href="#" class="btn-whats" data-title="Monte-Alegre - José Bonifácio/SP" data-preco="R$ 470.000,00">WhatsApp</a>
+        </div>
+      </div>
+
+      <!-- CASA 06 -->
+      <div class="imovel-card">
+        <a href="detalhes.html?id=6">
+          <img src="img/casa/06/01.jpg" class="imovel-img">
+        </a>
+        <h3 style="display:flex;align-items:center;justify-content:center;gap:6px;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#1ca55c" viewBox="0 0 24 24" style="vertical-align:middle;">
+            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+          </svg>
+          Sansone - José Bonifácio/SP
+        </h3>
+        <p class="detalhes">Casa · 3 quartos</p>
+        <p class="preco">R$ 400.000,00</p>
+        <div class="btn-area">
+          <a href="#" class="btn-contato">Ver contato</a>
+          <a href="#" class="btn-whats" data-title="Sansone - José Bonifácio/SP" data-preco="R$ 400.000,00">WhatsApp</a>
+        </div>
+      </div>
+
+      <!-- RANCHO -->
+      <div class="imovel-card">
+        <a href="detalhes.html?id=7">
+          <img src="img/rancho/01/01.jpg" class="imovel-img">
+        </a>
+        <h3 style="display:flex;align-items:center;justify-content:center;gap:6px;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#1ca55c" viewBox="0 0 24 24" style="vertical-align:middle;">
+            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+          </svg>
+          Rancho
+        </h3>
+        <p class="detalhes">Rancho · Lazer · Piscina</p>
+        <p class="preco">R$ 700.000,00</p>
+        <div class="btn-area">
+          <a href="#" class="btn-contato">Ver contato</a>
+          <a href="#" class="btn-whats" data-title="Rancho" data-preco="R$ 700.000,00">WhatsApp</a>
+        </div>
+      </div>
+
+      <!-- BARRACAO -->
+      <div class="imovel-card">
+        <a href="detalhes.html?id=8">
+          <img src="img/BARRACOES/01/01.jpg" class="imovel-img">
+        </a>
+        <h3 style="display:flex;align-items:center;justify-content:center;gap:6px;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#1ca55c" viewBox="0 0 24 24" style="vertical-align:middle;">
+            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+          </svg>
+          Barracão
+        </h3>
+        <p class="local">Avenida Industrial - José Bonifácio/SP</p>
+        <p class="detalhes">Barracão · 330m²</p>
+        <p class="preco">R$ 600.000,00</p>
+        <div class="btn-area">
+          <a href="#" class="btn-contato">Ver contato</a>
+          <a href="#" class="btn-whats" data-title="Barracão" data-preco="R$ 600.000,00">WhatsApp</a>
+        </div>
+      </div>
+
+      <!-- TERRENO 01 -->
+      <div class="imovel-card">
+        <a href="detalhes.html?id=9">
+          <img src="img/terrenos/01/01.jpg" class="imovel-img">
+        </a>
+        <h3 style="display:flex;align-items:center;justify-content:center;gap:6px;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#1ca55c" viewBox="0 0 24 24" style="vertical-align:middle;">
+            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+          </svg>
+          Terreno 01
+        </h3>
+        <p class="detalhes">Terreno · 437,27 m²</p>
+        <p class="preco">R$ 380.000,00</p>
+        <div class="btn-area">
+          <a href="#" class="btn-contato">Ver contato</a>
+          <a href="#" class="btn-whats" data-title="Terreno 01" data-preco="R$ 380.000,00">WhatsApp</a>
+        </div>
+      </div>
+
+      <!-- TERRENO 02 -->
+      <div class="imovel-card">
+        <a href="detalhes.html?id=10">
+          <img src="img/terrenos/02/01.jpg" class="imovel-img">
+        </a>
+        <h3 style="display:flex;align-items:center;justify-content:center;gap:6px;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#1ca55c" viewBox="0 0 24 24" style="vertical-align:middle;">
+            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+          </svg>
+          Terreno 02
+        </h3>
+
+        <p class="detalhes">Terreno · 307,77m²
+        </p>
+        <p class="preco">R$ 90.000,00</p>
+        <div class="btn-area">
+          <a href="" class="btn-contato">Ver contato</a>
+          <a href="#" class="btn-whats" data-title="Terreno 02" data-preco="R$ 90.000,00">WhatsApp</a>
+        </div>
+      </div>
+
+      <!-- TERRENO 03 -->
+      <div class="imovel-card">
+        <a href="detalhes.html?id=11">
+          <img src="img/terrenos/03/1.png" class="imovel-img">
+        </a>
+        <h3 style="display:flex;align-items:center;justify-content:center;gap:6px;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#1ca55c" viewBox="0 0 24 24" style="vertical-align:middle;">
+            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+          </svg>
+          Terreno 03
+        </h3>
+        <p class="detalhes">Terreno · 390m²</p>
+        <p class="preco">R$ 160.000,00</p>
+        <div class="btn-area">
+          <a href="#" class="btn-contato">Ver contato</a>
+          <a href="#" class="btn-whats" data-title="Terreno 03" data-preco="R$ 160.000,00">WhatsApp</a>
+        </div>
+      </div>
+
+  </main>
+
+
+  <footer class="site-footer">
+    <div class="footer-container">
+      <!-- Coluna 1 -->
+      <div class="footer-column">
+        <div class="footer-logo">
+          <img src="img/svg/LOGO BRANCA.svg" alt="Logo Galena Imobiliária">
+        </div>
+        <p>Avenida Antônio Gonçalves da Silva,1543, São José, Sala 2</p>
+        <p><a href="https://wa.me/5517991543138" target="_blank">(17) 99154-3138 - Galena</a> <i class="fab fa-whatsapp"></i></p>
+        <p><a href="mailto:galena.imob@gmail.com">Ver e-mail</a> <i class="fas fa-envelope"></i></p>
+      </div>
+
+      <!-- Coluna 2 -->
+      <div class="footer-column">
+        <h3>Menu</h3>
+        <ul>
+          <li><a href="index.html">Início</a></li>
+          <li><a href="sobre.html">Sobre</a></li>
+          <li><a href="contato.html">Contato</a></li>
+          <li><a href="politica.html">Política de Privacidade</a></li>
+          <li><a href="catalogo.html">Catalogo</a></li>
+          <li><a href="negocie.html">Negocie seu Imóvel</a></li>
+        </ul>
+      </div>
+
+      <!-- Coluna 3 -->
+      <div class="footer-column">
+        <h3>Fale Conosco</h3>
+        <form id="footer-form">
+          <input type="text" name="nome" placeholder="Seu nome" required>
+          <input type="email" name="email" placeholder="Seu e-mail" required>
+          <textarea name="mensagem" placeholder="Sua mensagem..." required></textarea>
+          <button type="submit">Enviar</button>
+          <div id="footer-status" style="margin-top:8px;font-size:15px;"></div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Linha inferior -->
+    <div class="footer-bottom">
+      <p>© Copyright 2025 - GALENA Imobiliária - Todos os direitos reservados</p>
+    </div>
+  </footer>
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+  <!-- Scripts do site -->
+  <script src="js/script.js"></script>
+  <script src="js/nav-active.js"></script>
+
+  <!-- EmailJS -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script src="js/emailjs-footer.js"></script>
+
+  <div id="contatoModal" class="modal-bg">
+    <div class="modal-box">
+      <span class="close-modal">&times;</span>
+      <h2>Atendimento</h2>
+
+      <div class="modal-info">
+        <p><strong>Email:</strong> galena.imob@gmail.com</p>
+        <p><strong>Endereço:</strong> Avenida Antônio Gonçalves da Silva, 1543,<br>São José, Sala 2</p>
+        <p><strong>Horário:</strong> Seg a Sex — 08h às 17h</p>
+      </div>
+
+      <div class="modal-buttons">
+        <a href="mailto:galena.imob@gmail.com" class="email-btn">Enviar Email</a>
+        <a href="https://wa.me/5517991543138" target="_blank" class="whatsapp-btn-info">WhatsApp</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Abrir modal ao clicar em qualquer "Ver contato"
+    document.querySelectorAll(".btn-contato").forEach(btn => {
+      btn.addEventListener("click", (e) => {
+        e.preventDefault();
+        document.getElementById("contatoModal").style.display = "flex";
+      });
+    });
+
+    // Fechar modal
+    document.querySelector(".close-modal").onclick = () => {
+      document.getElementById("contatoModal").style.display = "none";
+    };
+
+    window.onclick = (e) => {
+      if (e.target.classList.contains("modal-bg")) {
+        document.getElementById("contatoModal").style.display = "none";
+      }
+    };
+
+    document.querySelectorAll('.btn-whats').forEach(btn => {
+      btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        const title = btn.getAttribute('data-title') || '';
+        const preco = btn.getAttribute('data-preco') || '';
+        const phone = '5517991543138'; // Troque pelo número desejado
+        const msg = `Olá! Tenho interesse no imóvel "${title}" com valor ${preco}. Pode me passar mais informações?`;
+        const waUrl = `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
+        window.open(waUrl, '_blank');
+      });
+    });
+  </script>
+  <script src="cookies.js"></script>
+
+</body>
+
+</html>

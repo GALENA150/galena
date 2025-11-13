@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Galena - Imobiliária</title>
+  <link rel="stylesheet" href="css/cokkies.css" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="icon" href="img/svg/casa.svg">
+
+
+  <style>
+    body {
+      font-family: "Poppins", sans-serif;
+      background: #fff;
+      color: #222;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 60px auto;
+      padding: 20px;
+    }
+
+    h2 {
+      text-align: left;
+      font-size: 1.6rem;
+      margin-bottom: 20px;
+    }
+
+    h3 {
+      font-size: 1rem;
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+
+    section {
+      margin-bottom: 25px;
+    }
+
+    .form-grid {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      font-size: 0.95rem;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: #000;
+      outline: none;
+    }
+
+    textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    .toggle-buttons {
+      display: flex;
+      gap: 10px;
+    }
+
+    .toggle-buttons button {
+      flex: 1;
+      padding: 10px;
+      border: 1px solid #ccc;
+      background: #fff;
+      cursor: pointer;
+      border-radius: 6px;
+      font-weight: 500;
+    }
+
+    .toggle-buttons button.ativo {
+      background: #000;
+      color: #fff;
+    }
+
+    a.link {
+      color: #0066cc;
+      text-decoration: none;
+      font-size: 0.9rem;
+      align-self: center;
+    }
+
+    a.link:hover {
+      text-decoration: underline;
+    }
+
+    .checkboxes {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+      margin-top: 15px;
+    }
+
+    .checkboxes label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.95rem;
+      color: #333;
+      line-height: 1.4;
+      cursor: pointer;
+    }
+
+    .checkboxes input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      accent-color: #000;
+      cursor: pointer;
+    }
+
+    .checkboxes a {
+      color: #7a2ef0;
+      text-decoration: none;
+    }
+
+    .checkboxes a:hover {
+      text-decoration: underline;
+    }
+
+    .enviar {
+      background: #000;
+      color: #fff;
+      border: none;
+      padding: 12px 20px;
+      font-size: 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      width: 100%;
+      transition: 0.3s;
+    }
+
+    .enviar:hover {
+      background: #222;
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="header-container">
+      <div class="header-left">
+        <div class="whatsapp-dropdown desktop-only">
+          <button class="whatsapp-btn" id="whBtn" aria-expanded="false" aria-controls="whList">
+            <span class="wh-number">Galena</span>
+            <span class="icon-mask wh-icon" aria-hidden="true"></span>
+            <span class="wh-arrow" aria-hidden="true">▾</span>
+          </button>
+
+          <div class="dropdown-list" id="whList" role="menu" aria-hidden="true">
+            <button class="dropdown-item" data-phone="5517991543138" data-name="Galena">Galena<span class="icon-mask wh-icon" aria-hidden="true"></span></button>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="header-center">
+        <a href="index.html" class="logo-link">
+          <img src="img/logos/GALENA FUNDO BRANCO LETRA PRETA.jpeg" class="site-logo" alt="Logo" />
+        </a>
+      </div>
+
+      <div class="header-right">
+        <a href="https://instagram.com/galena.c.i" class="social-btn" target="_blank" rel="noopener noreferrer">
+          <img src="img/svg/instagram.svg" alt="Instagram" />
+        </a>
+      </div>
+    </div>
+
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-label="Abrir menu">
+      <span class="hamburger" aria-hidden="true"></span>
+    </button>
+
+    <nav class="main-nav" id="mainNav" role="navigation" aria-label="Menu principal">
+      <div class="nav-wrap">
+        <ul class="nav-list">
+          <li class="nav-item nav-whatsapp mobile-only">
+            <div class="nav-wh-list" role="group" aria-label="WhatsApp contatos">
+              <button class="nav-wh-btn dropdown-item" data-phone="5517991543138" aria-label="WhatsApp Galena">Galena — WhatsApp</button>
+              <button class="nav-wh-btn dropdown-item" data-phone="5517992118116" aria-label="WhatsApp Jeferson">Jeferson — WhatsApp</button>
+              <button class="nav-wh-btn dropdown-item" data-phone="5517997168554" aria-label="WhatsApp Marcelo">Marcelo — WhatsApp</button>
+            </div>
+          </li>
+
+          <li class="nav-item"><a href="index.html" class="nav-link active">Início</a></li>
+          <li class="nav-item"><a href="sobre.html" class="nav-link">Sobre</a></li>
+          <li class="nav-item"><a href="contato.html" class="nav-link">Contato</a></li>
+          <li class="nav-item"><a href="politica.html" class="nav-link">Política de Privacidade</a></li>
+          <li class="nav-item"><a href="catalogo.html" class="nav-link">Catalogo</a></li>
+          <li class="nav-item"><a href="negocie.html" class="nav-link">Negocie seu Imóvel</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container">
+    <h2>Negocie seu Imóvel</h2>
+
+    <form id="formImovel">
+      <!-- Dados pessoais -->
+      <section>
+        <h3>Seus dados:</h3>
+        <div class="form-grid">
+          <input type="text" name="nome" placeholder="Seu nome" required>
+          <input type="tel" name="telefone" placeholder="Seu telefone" required>
+          <input type="email" name="email" placeholder="Seu email" required>
+        </div>
+      </section>
+
+      <!-- Tipo -->
+      <section>
+        <h3>Você gostaria de:</h3>
+        <div class="toggle-buttons">
+          <button type="button" class="ativo" data-value="Vender">Vender</button>
+          <button type="button" data-value="Alugar">Alugar</button>
+        </div>
+        <input type="hidden" name="acao" value="Vender">
+      </section>
+
+      <!-- Imóvel -->
+      <section>
+        <h3>Seu imóvel é:</h3>
+        <div class="form-grid">
+          <select name="tipo_categoria" required>
+            <option>Residencial</option>
+            <option>Comercial</option>
+          </select>
+          <select name="tipo_imovel" required>
+            <option>Tipo de imóvel</option>
+            <option>Casa</option>
+            <option>Apartamento</option>
+            <option>Terreno</option>
+          </select>
+        </div>
+      </section>
+
+      <!-- Localização -->
+      <section>
+        <h3>Onde fica o imóvel?</h3>
+        <div class="form-grid">
+          <input type="text" name="cep" placeholder="CEP">
+          <a href="https://buscacepinter.correios.com.br/app/endereco/index.php" target="_blank" class="link">Não sei meu CEP</a>
+        </div>
+        <div class="form-grid">
+          <input type="text" name="uf" placeholder="UF">
+          <input type="text" name="cidade" placeholder="Cidade">
+          <input type="text" name="bairro" placeholder="Bairro">
+        </div>
+        <div class="form-grid">
+          <input type="text" name="endereco" placeholder="Endereço">
+          <input type="number" name="numero" placeholder="Número">
+          <input type="text" name="complemento" placeholder="Complemento">
+        </div>
+      </section>
+
+      <!-- Valores -->
+      <section>
+        <h3>Dados financeiros</h3>
+        <div class="form-grid">
+          <input type="number" name="preco" placeholder="Preço do imóvel">
+          <input type="number" name="condominio" placeholder="Condomínio (R$/mês)">
+          <input type="number" name="iptu" placeholder="IPTU (R$/ano)">
+        </div>
+      </section>
+
+      <!-- Descrição -->
+      <section>
+        <h3>Descreva seu imóvel</h3>
+        <textarea name="descricao" placeholder="Informe detalhes como ventilação, vizinhança, iluminação, etc."></textarea>
+      </section>
+
+      <!-- Termos -->
+      <section class="checkboxes">
+        <label>
+          <input type="checkbox" name="autorizacao" required>
+          <span>Autorizo a intermediação deste imóvel de minha propriedade.</span>
+        </label>
+        <label>
+          <input type="checkbox" name="privacidade" required>
+          <span>Concordo com a <a href="politica.html">Política de Privacidade</a>.</span>
+        </label>
+      </section>
+
+      <button type="submit" class="enviar">Enviar</button>
+    </form>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-container">
+      <!-- Coluna 1 -->
+      <div class="footer-column">
+        <div class="footer-logo">
+          <img src="img/svg/LOGO BRANCA.svg" alt="Logo Galena Imobiliária">
+        </div>
+        <p>Avenida Antônio Gonçalves da Silva,1543, São José, Sala 2</p>
+        <p><a href="https://wa.me/5517991543138" target="_blank">(17) 99154-3138 - Galena</a> <i class="fab fa-whatsapp"></i></p>
+        <p><a href="mailto:galena.imob@gmail.com">Ver e-mail</a> <i class="fas fa-envelope"></i></p>
+      </div>
+
+      <!-- Coluna 2 -->
+      <div class="footer-column">
+        <h3>Menu</h3>
+        <ul>
+          <li><a href="index.html">Início</a></li>
+          <li><a href="sobre.html">Sobre</a></li>
+          <li><a href="contato.html">Contato</a></li>
+          <li><a href="politica.html">Política de Privacidade</a></li>
+          <li><a href="catalogo.html">Catalogo</a></li>
+          <li><a href="negocie.html">Negocie seu Imóvel</a></li>
+        </ul>
+      </div>
+
+      <!-- Coluna 3 -->
+      <div class="footer-column">
+        <h3>Fale Conosco</h3>
+        <form id="footer-form">
+          <input type="text" name="nome" placeholder="Seu nome" required>
+          <input type="email" name="email" placeholder="Seu e-mail" required>
+          <textarea name="mensagem" placeholder="Sua mensagem..." required></textarea>
+          <button type="submit">Enviar</button>
+          <div id="footer-status" style="margin-top:8px;font-size:15px;"></div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Linha inferior -->
+    <div class="footer-bottom">
+      <p>© Copyright 2025 - GALENA Imobiliária - Todos os direitos reservados</p>
+    </div>
+  </footer>
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+  <!-- Scripts do site -->
+  <script src="js/script.js"></script>
+  <script src="js/nav-active.js"></script>
+
+  <!-- EmailJS -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script src="js/emailjs-footer.js"></script>
+
+  <script src="js/negocie.js"></script>
+  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+  <script>
+    (function () {
+      emailjs.init("xSO0YQjWZ5dbHX4LM"); // 🔑 substitua pela sua Public Key
+    })();
+  </script>
+
+  <script src="script.js"></script>
+  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <script src="script.js"></script>
+
+  <script src="cookies.js"></script>
+
+
+</body>
+
+</html>

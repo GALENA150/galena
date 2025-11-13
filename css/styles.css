@@ -1,0 +1,1912 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+:root {
+  --verde-claro: #67c693;
+  --verde-medio: #0ca361;
+  --verde: #057d3c;
+  --verde-escuro: #024625;
+  --verde-mais-escuro: #002f1c;
+  --azul-claro: #7d99b2;
+  --azul-medio: #4c6c86;
+  --azul: #2e4359;
+  --azul-escuro: #182531;
+  --azul-mais-escuro: #0f171f;
+  --amarelo-claro: #ffe889;
+  --amarelo-medio: #ffd73d;
+  --amarelo: #f8c500;
+  --amarelo-escuro: #b89000;
+  --amarelo-mais-escuro: #4b3600;
+  --cinza-branco: #ffffff;
+  --cinza-claro: #a6a6a6;
+  --cinza: #6e6e6e;
+  --cinza-escuro: #2d2d2d;
+  --cinza-mais-escuro: #111111;
+  --card-bg: var(--cinza-branco);
+  --card-border: #eef6ef;
+  --text: var(--azul-mais-escuro);
+  --muted: var(--cinza-claro);
+  --accent: var(--verde);
+  --accent-light: var(--verde-claro);
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  transition: background 0.3s, color 0.3s;
+}
+.catalog-container,
+.cards-grid {
+  background: transparent;
+}
+.imovel-card {
+  background: var(--card-bg);
+  color: var(--text);
+  box-shadow: var(--shadow);
+  transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+}
+.site-footer {
+  background: var(--footer-bg);
+  color: var(--footer-text);
+  transition: background 0.3s, color 0.3s;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+}
+a {
+  text-decoration: none;
+}
+html::selection {
+  background-color: var(--verde-escuro);
+  color: var(--cinza-branco);
+}
+
+.whatsapp-dropdown {
+  position: relative;
+  display: inline-block;
+  font-family: inherit;
+}
+
+.whatsapp-btn {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 26px;
+  padding: 8px 12px;
+  min-width: 200px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  cursor: pointer;
+  font-size: 15px;
+  color: var(--text);
+  box-shadow: 0 4px 12px rgba(2, 46, 24, 0.05);
+  transition: border-color 180ms ease, box-shadow 180ms ease,
+    transform 180ms ease;
+}
+
+.whatsapp-btn:hover {
+  border-color: var(--accent-light);
+  box-shadow: 0 8px 20px rgba(2, 46, 24, 0.08);
+}
+
+.wh-number {
+  flex: 1;
+  text-align: left;
+  color: var(--text);
+}
+
+.wh-icon {
+  width: 18px;
+  height: 18px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.wh-arrow {
+  color: var(--muted);
+  margin-left: 6px;
+  font-size: 14px;
+  transition: transform 180ms cubic-bezier(0.2, 0.9, 0.3, 1), color 180ms ease;
+  transform-origin: center;
+}
+
+.whatsapp-dropdown:hover .wh-arrow,
+.whatsapp-dropdown:focus-within .wh-arrow,
+.dropdown-list.show + .wh-arrow {
+  transform: rotate(180deg);
+  color: var(--accent);
+}
+
+.dropdown-list {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  background: var(--card-bg);
+  border-radius: 10px;
+  box-shadow: 0 12px 30px rgba(11, 30, 20, 0.08);
+  min-width: 220px;
+  z-index: 50;
+  padding: 6px 0;
+  border: 1px solid var(--card-border);
+  opacity: 0;
+  transform: translateY(6px) scale(0.995);
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 160ms cubic-bezier(0.2, 0.9, 0.3, 1),
+    transform 160ms cubic-bezier(0.2, 0.9, 0.3, 1), visibility 160ms;
+}
+
+.whatsapp-dropdown:hover .dropdown-list,
+.whatsapp-dropdown:focus-within .dropdown-list,
+.dropdown-list.show {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  padding: 10px 14px;
+  border: none;
+  background: transparent;
+  font-size: 15px;
+  color: var(--text);
+  cursor: pointer;
+  transition: background 140ms ease, transform 140ms ease;
+}
+
+.dropdown-item span {
+  text-align: left;
+}
+
+.dropdown-item:hover {
+  background: linear-gradient(
+    90deg,
+    rgba(7, 125, 60, 0.04),
+    rgba(7, 125, 60, 0.02)
+  );
+  transform: translateX(3px);
+}
+
+.site-header {
+  width: 100%;
+  background: transparent;
+  padding: 18px 28px;
+}
+.header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 12px;
+  align-content: center;
+}
+
+.header-left {
+  justify-self: start;
+}
+.header-center {
+  justify-self: center;
+}
+.header-right {
+  justify-self: end;
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.site-logo {
+  height: 180px;
+  width: auto;
+  display: block;
+}
+
+.social-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  box-shadow: 0 2px 8px rgba(2, 46, 24, 0.03);
+}
+.social-btn img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  filter: none;
+}
+
+/* ícone via máscara usando o PNG (verde mais escuro) */
+.icon-mask {
+  width: 18px;
+  height: 18px;
+  background-color: var(--verde);
+  -webkit-mask-image: url("../img/png/whatsapp.png");
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+  -webkit-mask-position: center;
+  mask-image: url("../img/png/whatsapp.png");
+  mask-repeat: no-repeat;
+  mask-size: contain;
+  mask-position: center;
+  display: inline-block;
+}
+
+/* fallback: se quiser usar a img original, esconda-a ao usar mask */
+.whatsapp-dropdown img.wh-icon {
+  display: none;
+}
+
+@media (max-width: 420px) {
+  .whatsapp-btn,
+  .dropdown-list {
+    min-width: 200px;
+  }
+  .wh-number {
+    font-size: 15px;
+  }
+}
+@media (max-width: 880px) {
+  .header-container {
+    max-width: 95%;
+    grid-template-columns: 1fr auto 1fr;
+  }
+  .whatsapp-btn {
+    min-width: 180px;
+    font-size: 14px;
+    padding: 7px 10px;
+  }
+  .dropdown-list {
+    min-width: 200px;
+  }
+}
+
+/* helpers */
+.desktop-only {
+  display: block;
+}
+.mobile-only {
+  display: none;
+}
+
+/* ajuste do menu lateral no mobile (abrir à esquerda) */
+@media (max-width: 880px) {
+  .nav-toggle {
+    display: flex;
+    left: 18px;
+    right: auto;
+  }
+
+  .desktop-only {
+    display: none;
+  }
+  .mobile-only {
+    display: block;
+  }
+
+  .main-nav {
+    position: fixed;
+    left: 12px;
+    top: 72px; /* abaixo do header */
+    width: 280px;
+    max-width: calc(100% - 24px);
+    height: calc(100vh - 88px);
+    background: transparent;
+    border-radius: 0;
+    display: block;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(-12px) scale(0.995);
+    transition: transform 220ms cubic-bezier(0.2, 0.9, 0.3, 1),
+      opacity 180ms ease;
+    z-index: 120;
+    overflow: auto;
+  }
+
+  .main-nav.open {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(0) scale(1);
+  }
+
+  .nav-wrap {
+    padding: 12px;
+  }
+  .nav-list {
+    flex-direction: column;
+    gap: 10px;
+    align-items: stretch;
+    background: var(--card-bg);
+    margin: 0;
+    padding: 12px;
+    border-radius: 10px;
+    box-shadow: 0 18px 40px rgba(11, 30, 20, 0.12);
+    width: 100%;
+  }
+
+  .nav-item {
+    width: 100%;
+  }
+  .nav-link {
+    padding: 12px 14px;
+    display: block;
+  }
+  .nav-wh-btn {
+    width: 100%;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    padding: 10px 12px;
+    background: transparent;
+    border-radius: 8px;
+    border: 1px solid var(--card-border);
+    justify-content: flex-start;
+  }
+  .nav-wh-btn .wh-icon {
+    margin-right: 8px;
+  }
+  .nav-wh-text {
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  .hamburger.open {
+    background: transparent;
+  }
+  .hamburger.open::before {
+    transform: translateY(7px) rotate(45deg);
+  }
+  .hamburger.open::after {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+}
+
+@media (max-width: 560px) {
+  .header-container {
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+  }
+  .site-logo {
+    height: 44px;
+  }
+  .header-left,
+  .header-right {
+    transform: translateY(0);
+  }
+}
+
+.nav-toggle {
+  display: none;
+  position: absolute;
+  right: 18px;
+  top: 18px;
+  width: 44px;
+  height: 44px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  z-index: 80;
+  align-items: center;
+  justify-content: center;
+}
+.hamburger {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--azul-mais-escuro);
+  position: relative;
+  transition: transform 160ms ease;
+}
+.hamburger::before,
+.hamburger::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 22px;
+  height: 2px;
+  background: var(--azul-mais-escuro);
+  transition: transform 160ms ease, opacity 160ms ease;
+}
+.hamburger::before {
+  top: -7px;
+}
+.hamburger::after {
+  top: 7px;
+}
+
+.main-nav {
+  transition: max-height 260ms ease, opacity 200ms ease;
+}
+
+/* desktop layout of nav */
+.nav-wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 8px 20px;
+}
+.nav-list {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  white-space: nowrap;
+}
+.nav-link {
+  display: inline-block;
+  padding: 8px 14px;
+  border-radius: 8px;
+  color: var(--text);
+  text-decoration: none;
+  font-size: 15px;
+  transition: background 160ms ease, color 160ms ease, transform 160ms ease;
+}
+.nav-link:hover {
+  background: rgba(2, 46, 24, 0.04);
+  transform: translateY(-1px);
+}
+.nav-link.active {
+  color: var(--card-bg) !important; /* branco */
+  background: var(--cinza-mais-escuro);
+}
+
+/* mobile behaviour */
+@media (max-width: 880px) {
+  .nav-toggle {
+    display: flex;
+  }
+
+  .main-nav {
+    position: fixed;
+    left: 12px;
+    top: 72px;
+    width: 280px;
+    max-width: calc(100% - 24px);
+    height: calc(100vh - 88px);
+    background: transparent;
+    border-radius: 0;
+    display: block;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(-12px) scale(0.995);
+    transition: transform 220ms cubic-bezier(0.2, 0.9, 0.3, 1),
+      opacity 180ms ease;
+    z-index: 120;
+    overflow: auto;
+  }
+
+  .main-nav.open {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(0) scale(1);
+  }
+
+  .nav-list {
+    flex-direction: column;
+    gap: 6px;
+    align-items: stretch;
+    background: var(--card-bg);
+    margin: 0 auto;
+    padding: 12px;
+    border-radius: 8px;
+    box-shadow: 0 12px 30px rgba(11, 30, 20, 0.06);
+    width: calc(100% - 40px);
+    max-width: 420px;
+  }
+
+  .nav-link {
+    padding: 10px 14px;
+    display: block;
+    border-radius: 6px;
+  }
+
+  .hamburger.open {
+    background: transparent;
+  }
+  .hamburger.open::before {
+    transform: translateY(7px) rotate(45deg);
+  }
+  .hamburger.open::after {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+}
+
+/* Banner responsivo e proporcional */
+.hero-banner {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  max-height: 720px; /* aumentei para evitar corte no desktop */
+  min-height: 320px; /* garante altura mínima */
+}
+
+.hero-media {
+  position: relative;
+  width: 100%;
+}
+/* aumenta a "área" do banner para não cortar a imagem */
+.hero-media::before {
+  content: "";
+  display: block;
+  padding-top: 25%; /* aumentar = banner mais alto (ajuste se precisar) */
+}
+
+/* imagem cobre toda a área mantendo proporção */
+/* desloca a imagem um pouco pra baixo (segunda valor = y%) */
+.hero-media img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 100% 40%; /* foco à direita, 40% do topo (desce a imagem) */
+  display: block;
+}
+
+/* responsivo: em telas menores centraliza e deixa mais alto */
+@media (max-width: 920px) {
+  .hero-banner {
+    max-height: 150px;
+  }
+  .hero-media::before {
+    padding-top: 23%; /* mantém banner mais alto em tablet/móvel */
+  }
+  .hero-media img {
+    object-position: 50% 50%; /* centro horizontal, 40% vertical */
+  }
+}
+
+@media (max-width: 420px) {
+  .hero-banner {
+    max-height: 900px;
+  }
+  .hero-media::before {
+    padding-top: 62%;
+  }
+  .hero-media img {
+    object-position: 50% 50%; /* centro total em mobile */
+  }
+}
+
+/* garante contraste se imagem escura/clara (opcional) */
+.hero-inner .btn {
+  pointer-events: auto;
+}
+
+/* fim do bloco de banner */
+
+/* alinhar hamburger, logo e ícone (insta) em dispositivos menores */
+@media (max-width: 880px) {
+  /* organiza o header em 3 colunas: botão | logo | ações */
+  .header-container {
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 8px;
+  }
+
+  /* tira o botão hamburger da posição absoluta e deixa ele no fluxo do header */
+  .nav-toggle {
+    position: static;
+    left: auto;
+    top: auto;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 4px;
+    margin-right: 6px;
+    z-index: 140;
+  }
+
+  .site-header {
+    padding-top: 8px;
+  }
+  .whatsapp-dropdown.desktop-only {
+    display: none;
+  }
+  .site-logo {
+    height: 48px;
+    max-width: 220px;
+  }
+}
+
+/* somente em celulares pequenos (fixo no canto superior-esquerdo) */
+@media (max-width: 560px) {
+  .nav-toggle {
+    position: fixed;
+    left: 12px;
+    top: 12px;
+    display: flex;
+    width: 44px;
+    height: 44px;
+    align-items: center;
+    justify-content: center;
+    z-index: 240;
+    background: transparent;
+    border: none;
+    padding: 6px;
+  }
+
+  /* evita que a logo seja empurrada para baixo */
+  .site-header {
+    padding-top: 10px;
+  }
+
+  /* esconde whatsapp desktop quando menu fixo aparece */
+  .whatsapp-dropdown.desktop-only {
+    display: none;
+  }
+}
+
+/* mantém comportamento normal em desktop */
+@media (min-width: 881px) {
+  .nav-toggle {
+    display: none !important;
+  } /* hamburger escondido em desktop */
+  .main-nav {
+    display: block !important;
+    position: relative !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    transform: none !important;
+    z-index: 1200 !important;
+  }
+  .nav-list {
+    display: flex !important;
+    gap: 18px;
+    align-items: center;
+    justify-content: center;
+  }
+  .nav-link {
+    color: #000000 !important;
+  }
+
+  .catalog-container,
+  .cards-grid {
+    grid-template-columns: repeat(
+      auto-fit,
+      minmax(420px, 1fr)
+    ); /* era 280px ou 320px, agora 340px */
+    gap: 32px;
+    padding: 40px 24px;
+  }
+  .imovel-card,
+  .property-card,
+  .card {
+    padding: 22px;
+    font-size: 1.05rem;
+  }
+  .imovel-img,
+  .property-card .card-media img {
+    height: 180px;
+    border-radius: 14px;
+  }
+}
+
+/* mobile: garante nav abrir/fechar e botão esconder-se suavemente */
+@media (max-width: 880px) {
+  .main-nav {
+    display: block !important;
+  } /* garante visibilidade base */
+  .main-nav {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(-12px) scale(0.995);
+    transition: transform 0.22s, opacity 0.18s;
+  }
+  .main-nav.open {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(0) scale(1);
+  }
+  .nav-toggle {
+    display: flex;
+    z-index: 1300;
+    transition: opacity 0.2s, transform 0.2s;
+  }
+  .nav-toggle.hidden {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.98);
+    pointer-events: none;
+    visibility: hidden;
+  }
+}
+
+/* Busca estilizada — usa variáveis de cor do site */
+.search-form {
+  display: grid;
+  grid-template-columns: 170px 1fr 160px 120px auto;
+  gap: 12px;
+  align-items: center;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 14px;
+  background: rgba(
+    255,
+    255,
+    255,
+    0.92
+  ); /* leve fundo branco para legibilidade */
+  border-radius: 12px;
+  box-shadow: 0 14px 40px rgba(2, 46, 24, 0.06);
+  border: 1px solid var(--card-border);
+  box-sizing: border-box;
+}
+
+/* campos gerais */
+.search-form .form-control {
+  appearance: none;
+  -webkit-appearance: none;
+  height: 48px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--card-border);
+  background: var(--card-bg);
+  color: var(--text);
+  font-size: 15px;
+  outline: none;
+  transition: box-shadow 160ms ease, transform 120ms ease;
+}
+.search-form .form-control:focus {
+  box-shadow: 0 6px 18px rgba(2, 46, 24, 0.06);
+  transform: translateY(-1px);
+  border-color: var(--azul-mais-escuro);
+}
+
+/* botão buscar */
+.search-form .btn-search {
+  height: 48px;
+  padding: 0 18px;
+  background: var(--azul-mais-escuro);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 10px 28px rgba(2, 46, 24, 0.08);
+  transition: transform 140ms ease, box-shadow 140ms ease, opacity 120ms ease;
+}
+.search-form .btn-search:hover {
+  transform: translateY(-2px);
+  opacity: 0.98;
+}
+
+/* placeholder e small accessibility helpers */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+/* responsivo: empilha em telas pequenas */
+@media (max-width: 920px) {
+  .search-form {
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: auto;
+    gap: 10px;
+    padding: 12px;
+  }
+  .search-form .btn-search {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 560px) {
+  .search-form {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    padding: 10px;
+  }
+  .search-form .form-control,
+  .search-form .btn-search {
+    height: 48px;
+  }
+}
+
+/* ajusta contraste do banner abaixo do form */
+.hero-banner {
+  padding-bottom: 22px;
+}
+
+.titulo-h2 {
+  text-align: center;
+  margin: 32px auto;
+  font-weight: 400;
+  max-width: 50%;
+  font-size: 21px;
+  display: block; /* ou simplesmente remova o display:flex */
+}
+
+/* autocomplete dropdown */
+/* Autocomplete menor e com altura limitada (substitua o bloco .autocomplete-list atual) */
+.autocomplete-list {
+  position: absolute; /* posição controlada pelo JS */
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  box-shadow: 0 10px 28px rgba(2, 46, 24, 0.06);
+  border-radius: 8px;
+  overflow: auto;
+  max-height: 240px;
+  padding: 6px 0;
+  box-sizing: border-box;
+  font-size: 15px;
+}
+.autocomplete-item {
+  padding: 10px 12px;
+  cursor: pointer;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.autocomplete-item:hover {
+  background: rgba(2, 46, 24, 0.04);
+  transform: translateX(6px);
+}
+
+/* Container padrão (centraliza conteúdo) */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 18px;
+  box-sizing: border-box;
+}
+
+/* contador de resultados */
+#result-count {
+  color: var(--muted);
+  margin-bottom: 12px;
+  font-size: 14px;
+}
+
+/* Grid responsivo dos cards */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 22px;
+  align-items: start;
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 18px;
+}
+
+/* Força que cada card ocupe 100% da coluna do grid */
+.property-card,
+.card {
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+/* imagem do topo — mantém proporção e evita colunas estreitas */
+.property-card .card-media {
+  height: 220px; /* ajusta conforme precisa */
+  min-height: 160px;
+  background: #f3f6f4;
+  overflow: hidden;
+}
+.property-card .card-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* corpo do card */
+.property-card .card-body {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* título / meta / preço */
+.property-card .card-title {
+  font-size: 18px;
+  margin: 0;
+}
+.property-card .meta {
+  font-size: 13px;
+  color: var(--muted);
+}
+.property-card .price {
+  font-weight: 800;
+  color: var(--verde-mais-escuro);
+}
+
+/* container de ações (botões) alinhado e consistente */
+.property-card .card-actions,
+.card-body > div {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: center; /* alterar para flex-end se quiser direita */
+  padding-top: 12px;
+  flex-wrap: wrap;
+}
+.property-card .btn,
+.btn-whatsapp-card,
+.btn-whatsapp {
+  min-height: 40px;
+  padding: 8px 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* botão whatsapp do card específico */
+.btn-whatsapp-card {
+  background: var(--verde);
+  color: #fff;
+  border-radius: 8px;
+  text-decoration: none;
+  box-shadow: 0 8px 20px rgba(5, 125, 60, 0.12);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+/* garante ícone SVG e texto branco nos botões WhatsApp */
+.btn-whatsapp-card .wa-text,
+.contact-whatsapp .wa-text,
+.btn-whatsapp-card .wa-icon,
+.contact-whatsapp .wa-icon {
+  color: #fff;
+}
+
+/* ajuste do svg dentro do botão para preservar espaço e alinhamento */
+.wa-svg {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 8px;
+  width: 18px;
+  height: 18px;
+}
+
+/* assegura que o texto do botão fique branco */
+.btn-whatsapp-card,
+.contact-whatsapp,
+.btn-whatsapp {
+  color: #fff !important;
+}
+
+/* pequenas melhorias visuais para consistência */
+.btn-whatsapp-card .wa-text,
+.contact-whatsapp .wa-text {
+  font-weight: 700;
+  font-size: 15px;
+}
+
+/* responsivo: empilha ações e reduz imagem */
+@media (max-width: 560px) {
+  .cards-grid {
+    gap: 14px;
+  }
+  .property-card .card-media {
+    height: 160px;
+  }
+  .property-card .card-actions,
+  .card-body > div {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .property-card .btn,
+  .btn-whatsapp-card,
+  .btn-whatsapp {
+    width: 100%;
+  }
+}
+
+/* anula estilos fixos indesejados do WhatsApp */
+.contact-whatsapp,
+.whatsapp-floating,
+.btn-whatsapp.fixed,
+.btn-whatsapp-sticky {
+  position: static !important;
+  bottom: auto !important;
+  right: auto !important;
+  left: auto !important;
+  width: auto !important;
+  z-index: auto !important;
+}
+
+/* garante que ações do card fiquem dentro do card (não flutuam) */
+.property-card,
+.property-card .card-actions {
+  position: relative;
+  z-index: 1;
+}
+
+/* se os botões continuam desalinhados, força alinhamento no rodapé interno do card */
+.property-card .card-actions {
+  margin-top: auto; /* empurra ações para o fim do corpo do card */
+  align-self: stretch;
+  padding-top: 12px;
+  justify-content: center; /* ou flex-end para direita */
+}
+
+/* Overrides para garantir modal centralizado e sobre o conteúdo */
+.contact-modal-overlay {
+  position: fixed !important;
+  inset: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 28px !important;
+  background: rgba(0, 0, 0, 0.48) !important;
+  backdrop-filter: blur(4px) !important;
+  z-index: 2147483647 !important;
+  box-sizing: border-box !important;
+  overflow-y: auto !important;
+}
+
+.contact-modal-card {
+  width: 760px;
+  max-width: calc(100% - 48px);
+  background: linear-gradient(180deg, #ffffff 0%, #fbfdfb 100%);
+  border-radius: 14px;
+  box-shadow: 0 30px 60px rgba(6, 30, 18, 0.22);
+  padding: 18px;
+  box-sizing: border-box;
+  position: relative;
+  max-height: calc(100vh - 96px);
+  overflow: auto;
+}
+
+/* Close button */
+.contact-modal-close {
+  position: absolute !important;
+  right: 12px !important;
+  top: 10px !important;
+  background: transparent !important;
+  border: none !important;
+  font-size: 20px !important;
+  cursor: pointer !important;
+  color: #234;
+  padding: 6px;
+}
+
+/* Body / Form layout */
+.contact-modal-body {
+  padding-top: 6px;
+}
+
+/* grid form: left = inputs, right = message (desktop) */
+.contact-compact-form {
+  /* um campo por linha, mesmo no desktop */
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+  width: 100%;
+  align-items: stretch;
+  margin-top: 6px;
+}
+
+/* labels acima dos campos, mais limpos */
+.contact-compact-form label {
+  display: block;
+  font-size: 14px;
+  color: var(--azul-mais-escuro);
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+/* inputs e textarea com visual consistente e largura total */
+.contact-compact-form .contact-field,
+.contact-compact-form .field {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid var(--card-border);
+  background: var(--card-bg);
+  color: var(--text);
+  font-size: 15px;
+  box-shadow: none;
+  outline: none;
+  transition: box-shadow 120ms ease, transform 120ms ease,
+    border-color 120ms ease;
+}
+.contact-compact-form .contact-field:focus,
+.contact-compact-form .field:focus {
+  box-shadow: 0 10px 28px rgba(2, 46, 24, 0.06);
+  transform: translateY(-2px);
+  border-color: var(--azul-mais-escuro);
+}
+
+/* mensagem maior e confortável */
+.contact-compact-form textarea.contact-field {
+  min-height: 140px;
+  resize: vertical;
+  line-height: 1.4;
+}
+
+/* ações: botões empilhados, cheios e com bom espaçamento */
+.contact-compact-form .form-actions {
+  display: flex;
+  flex-direction: column; /* um em cima do outro */
+  gap: 12px;
+  grid-column: 1 / -1;
+  margin-top: 8px;
+  align-items: stretch;
+}
+
+/* botão WhatsApp: verde com ícone branco (usa currentColor) */
+.contact-whatsapp {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  background: var(--verde);
+  color: #fff; /* ícone SVG usa currentColor e ficará branco */
+  border-radius: 10px;
+  font-weight: 800;
+  text-decoration: none;
+  box-shadow: 0 12px 30px rgba(7, 125, 60, 0.12);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  justify-content: center;
+  width: 100%;
+}
+
+/* botão Enviar secundário */
+.contact-submit {
+  background: #0f171f;
+  color: #fff;
+  border: none;
+  padding: 12px 16px;
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  width: 100%;
+  box-shadow: 0 8px 20px rgba(2, 46, 24, 0.06);
+}
+
+/* garante SVG branco e alinhamento */
+.contact-whatsapp .wa-svg,
+.btn-whatsapp-card .wa-svg {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 8px;
+  color: #fff;
+}
+
+/* se você preferir usar a imagem PNG do projeto e ela for verde,
+   recomenda-se usar o SVG acima. Caso queira usar PNG, podemos inverter cor via filter. */
+
+/* mobile: mantém empilhado e com espaçamento confortável */
+@media (max-width: 720px) {
+  .contact-compact-form .form-actions {
+    gap: 10px;
+  }
+  .contact-whatsapp,
+  .contact-submit {
+    padding: 12px;
+  }
+}
+
+.header-nav a.active,
+.header-nav a.active:focus,
+.header-nav a.active:hover {
+  background: #000; /* fundo preto */
+  color: #fff; /* texto branco */
+  border-radius: 8px;
+  padding: 8px 14px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+  text-decoration: none;
+}
+
+/* Botão "Ver contato" preto e estilizado */
+.btn-contact {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #000; /* fundo preto */
+  color: #fff; /* texto branco */
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 160ms ease, box-shadow 160ms ease, opacity 160ms ease;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+/* leve elevação ao passar o mouse */
+.btn-contact:hover,
+.btn-contact:focus {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.24);
+  outline: none;
+  opacity: 0.98;
+}
+
+/* feedback de clique/tap */
+.btn-contact:active {
+  transform: translateY(-1px) scale(0.995);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+}
+
+/* icon simples (círculo) antes do texto caso queira usar pseudo-elemento */
+.btn-contact::before {
+  content: "";
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  background: linear-gradient(180deg, #57d47a, #2e9b4b);
+  border-radius: 50%;
+  box-shadow: 0 2px 6px rgba(46, 155, 75, 0.28) inset;
+  flex-shrink: 0;
+}
+
+/* adaptações para o layout do card (quando usado junto com .btn-whatsapp) */
+.card-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.btn-whatsapp-card {
+  text-decoration: none;
+}
+
+/* garante contraste em telas pequenas */
+@media (max-width: 560px) {
+  .btn-contact {
+    padding: 8px 10px;
+    font-size: 14px;
+    border-radius: 10px;
+  }
+}
+
+.politica-section {
+  max-width: 800px;
+  margin: 40px auto;
+  background: #fff;
+  padding: 32px 24px;
+  border-radius: 12px;
+}
+
+.politica-section h1 {
+  font-size: 2.2rem;
+  margin-bottom: 18px;
+  color: var(--verde);
+  text-align: center;
+}
+
+.politica-section h2 {
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+  color: var(--verde);
+  text-align: center;
+}
+
+.politica-section h3 {
+  font-size: 1.1rem;
+  margin-top: 28px;
+  margin-bottom: 10px;
+  color: var(--verde);
+}
+
+.politica-section ul {
+  margin-left: 18px;
+  margin-bottom: 18px;
+}
+
+.politica-section p,
+.politica-section ul {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #222;
+}
+
+.politica-section a {
+  color: var(--verde-mais-escuro);
+  text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+  .politica-section {
+    padding: 18px 8px;
+    margin: 18px 4px;
+  }
+  .politica-section h1 {
+    font-size: 1.5rem;
+  }
+  .politica-section h2 {
+    font-size: 1.1rem;
+  }
+  .politica-section h3 {
+    font-size: 1rem;
+  }
+  .politica-section p,
+  .politica-section ul {
+    font-size: 0.97rem;
+  }
+  .card-imovel {
+    width: 95vw;
+    max-width: 420px;
+    margin: 12px auto;
+    padding: 12px 8px;
+    border-radius: 16px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  }
+  .card-imovel img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 12px;
+  }
+  .card-imovel h2 {
+    font-size: 1.2rem;
+    margin: 8px 0 2px 0;
+  }
+  .card-imovel .card-info {
+    font-size: 1rem;
+    margin-bottom: 6px;
+  }
+  .card-imovel .card-price {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+  .card-imovel .card-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
+  }
+  .card-imovel .card-actions button,
+  .card-imovel .card-actions a {
+    flex: 1;
+    font-size: 1rem;
+    padding: 12px 0;
+    border-radius: 8px;
+  }
+  .hero-banner {
+    width: 97%;
+    max-height: 260px;
+    min-height: 140px;
+    overflow: hidden;
+  }
+  .hero-media::before {
+    padding-top: 22%; /* altura proporcional do banner */
+  }
+  .hero-media img {
+    object-position: 50% 50%; /* centraliza imagem */
+  }
+}
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: opacity, transform;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.site-footer {
+  background: var(--cinza-mais-escuro);
+  color: var(--footer-text);
+  transition: background 0.3s, color 0.3s;
+  padding-top: 40px;
+  font-family: "Poppins", sans-serif;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-bottom: 40px;
+  align-items: flex-start;
+}
+
+.footer-column {
+  flex: 1;
+  min-width: 260px;
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-column h3 {
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+  color: #fff;
+}
+
+.footer-column p,
+.footer-column a,
+.footer-column li {
+  color: #ccc;
+  font-size: 0.95rem;
+  line-height: 1.8;
+  text-decoration: none;
+}
+
+.footer-column a:hover {
+  color: #fff;
+}
+
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-column li {
+  margin-bottom: 8px;
+}
+
+/* Formulário */
+#footer-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#footer-form input,
+#footer-form textarea {
+  background-color: #111;
+  border: 1px solid #333;
+  color: #fff;
+  padding: 10px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+}
+
+#footer-form textarea {
+  resize: none;
+  height: 80px;
+}
+
+#footer-form button {
+  background-color: #25d366;
+  border: none;
+  color: #fff;
+  padding: 10px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#footer-form button:hover {
+  background-color: #1ea955;
+}
+
+/* Linha inferior */
+.footer-bottom {
+  border-top: 1px solid #222;
+  padding: 15px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  font-size: 0.9rem;
+}
+
+.footer-bottom p {
+  color: #ccc;
+  margin: 5px 0;
+}
+
+.developer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.developer img {
+  height: 20px;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .footer-column {
+    margin: 10px auto;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+  }
+}
+.footer-logo img {
+  width: 180px; /* ajuste o tamanho conforme o espaço */
+  height: auto;
+  margin-bottom: 15px;
+}
+.catalog-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 25px;
+  padding: 40px 20px;
+}
+
+.imovel-card {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding-bottom: 15px;
+  overflow: hidden;
+  text-align: center;
+}
+
+.imovel-img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+.imovel-card h3 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-top: 12px;
+}
+
+.local {
+  color: #777;
+  font-size: 15px;
+}
+
+.detalhes {
+  font-size: 14px;
+  color: gray;
+}
+
+.preco {
+  font-size: 20px;
+  color: #007f3f;
+  font-weight: bold;
+  margin-top: 8px;
+}
+
+.btn-area {
+  display: flex;
+  gap: 8px;
+  padding: 15px;
+  justify-content: center;
+}
+
+.btn-contato,
+.btn-whats {
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-weight: bold;
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.btn-contato {
+  background: #000;
+}
+
+.btn-whats {
+  background: #1db954;
+}
+/* Modal fundo */
+.modal-bg {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(6px);
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+/* Caixa */
+.modal-box {
+  background: #fff;
+  width: 360px;
+  padding: 26px;
+  border-radius: 14px;
+  text-align: center;
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.25);
+  animation: modalAnim 0.25s ease-out;
+}
+
+@keyframes modalAnim {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Fechar */
+.close-modal {
+  float: right;
+  cursor: pointer;
+  font-size: 22px;
+  color: #333;
+}
+
+/* Texto */
+.modal-info p {
+  margin: 8px 0;
+  color: #333;
+  font-size: 15px;
+}
+
+/* Botões */
+.modal-buttons a {
+  display: inline-block;
+  margin: 8px 6px 0;
+  padding: 10px 16px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* Estilo botões */
+.email-btn {
+  background: #000;
+  color: #fff;
+}
+
+.whatsapp-btn-info {
+  background: #25d366;
+  color: #fff;
+}
+
+/* Cards sempre em duas colunas no catálogo, inclusive tablet e celular */
+.catalog-container,
+.cards-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  padding: 20px 8px;
+}
+
+/* Ajusta imagem para ficar visível e proporcional */
+.imovel-img,
+.property-card .card-media img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 10px;
+  background: #f3f6f4;
+}
+
+/* Cards menores e legíveis */
+.imovel-card,
+.property-card,
+.card {
+  min-width: 0;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  font-size: 0.97rem;
+}
+
+/* Responsivo: mantém duas colunas mesmo em telas pequenas */
+@media (max-width: 700px) {
+  .catalog-container,
+  .cards-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    padding: 10px 2px;
+  }
+  .imovel-img,
+  .property-card .card-media img {
+    height: 90px;
+  }
+}
+
+@media (max-width: 420px) {
+  .catalog-container,
+  .cards-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+    padding: 6px 1px;
+  }
+  .imovel-img,
+  .property-card .card-media img {
+    height: 64px;
+  }
+}
+
+/* Desktop: grid fluido com várias colunas */
+.catalog-container,
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 22px;
+  align-items: start;
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 18px;
+}
+
+/* Tablet/celular: sempre duas colunas, cards menores e imagens proporcionais */
+@media (max-width: 880px) {
+  .catalog-container,
+  .cards-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    padding: 10px 4px;
+  }
+  .imovel-img,
+  .property-card .card-media img {
+    height: 120px;
+    object-fit: cover;
+    border-radius: 10px;
+    background: #f3f6f4;
+  }
+}
+
+/* Celular pequeno: mantém duas colunas, imagens menores */
+@media (max-width: 480px) {
+  .catalog-container,
+  .cards-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    padding: 6px 1px;
+  }
+  .imovel-img,
+  .property-card .card-media img {
+    height: 80px;
+  }
+}
+.sobre-caixas {
+  max-width: 900px;
+  margin: 40px auto 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  margin-bottom: 72px;
+}
+.sobre-box {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
+  padding: 32px 24px;
+  min-height: 340px; /* aumenta a altura da caixa */
+}
+.sobre-box-row {
+  flex-direction: row;
+}
+.sobre-box-row-reverse {
+  flex-direction: row-reverse;
+}
+.sobre-box-img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 300px;
+  max-width: 340px;
+  height: 240px;
+}
+.sobre-box-img img {
+  width: 100%;
+  max-width: 300px;
+  object-fit: contain;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  background: #fff;
+}
+@media (max-width: 700px) {
+  .sobre-box-img,
+  .sobre-box-img img {
+    min-width: 0;
+    max-width: 100%;
+    height: 180px;
+  }
+  .sobre-box {
+    min-height: 0;
+    padding: 18px 8px;
+  }
+}
+
+.ultima-hora {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-weight: 400;
+  padding: 24px 8px;
+  text-align: center;
+}
+
+.ultima-hora img {
+  width: 270px;
+  max-width: 80vw;
+  height: auto;
+  margin-bottom: 18px;
+  object-fit: contain;
+  border-radius: 12px;
+}
+
+@media (max-width: 700px) {
+  .ultima-hora img {
+    width: 120px;
+    max-width: 90vw;
+    margin-bottom: 12px;
+  }
+  .ultima-hora {
+    padding: 16px 4px;
+  }
+}
+@media (max-width: 600px) {
+  .sobre-caixas {
+    max-width: 98vw;
+    padding: 0 2vw;
+    gap: 18px;
+    margin-bottom: 32px;
+  }
+  .sobre-box,
+  .sobre-box.sobre-box-row,
+  .sobre-box.sobre-box-row-reverse {
+    flex-direction: column !important;
+    align-items: center;
+    text-align: center;
+    padding: 16px 6px;
+    min-height: unset;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  }
+  .sobre-box-img {
+    min-width: 0;
+    max-width: 90vw;
+    height: auto;
+    margin-bottom: 10px;
+  }
+  .sobre-box-img img {
+    width: 70vw;
+    max-width: 240px;
+    height: auto;
+    margin-bottom: 10px;
+  }
+  .sobre-box-text h2 {
+    font-size: 1.15rem;
+    margin-bottom: 8px;
+    font-weight: 700;
+  }
+  .sobre-box-text p {
+    font-size: 0.97rem;
+    line-height: 1.5;
+  }
+}
