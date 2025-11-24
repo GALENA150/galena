@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
       <p>
         Usamos cookies para melhorar sua experiência em nosso site.
         Ao continuar navegando, você concorda com nossa
-        <a href="politica-de-privacidade.html" target="_blank">Política de Privacidade</a>.
+        <a href="politica.html" target="_blank">Política de Privacidade</a>.
       </p>
       <button id="acceptCookies">Aceitar</button>
     `;
